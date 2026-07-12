@@ -208,22 +208,28 @@ export function About() {
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-lux filter grayscale contrast-[1.1] group-hover:grayscale-0"
                   />
-                  {/* Subtle Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/15 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+                  {/* Dark Gradient Overlay for perfect readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/70 to-transparent opacity-95 group-hover:opacity-85 transition-opacity duration-500"></div>
                 </div>
 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
                   <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-brand-gold mb-2">
-                      {member.role}
-                    </p>
-                    <h4 className="font-heading font-bold text-brand-text1 text-2xl mb-1">
+                    <h4 className="font-heading font-bold text-brand-text1 text-2xl mb-3">
                       {member.name}
                     </h4>
-                    <p className="text-xs text-brand-text3 font-medium uppercase tracking-wider mb-4">
-                      {member.spec}
-                    </p>
+                    
+                    {/* Rank / Designation & Specialization Detail Box */}
+                    <div className="flex flex-col gap-2 mb-4 border-t border-brand-border1/40 pt-3">
+                      <div className="flex items-center justify-between text-[10px] uppercase tracking-wider">
+                        <span className="text-brand-text3 font-medium">Designation / Rank</span>
+                        <span className="text-brand-gold font-bold">{member.role}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[10px] uppercase tracking-wider">
+                        <span className="text-brand-text3 font-medium">Specialization</span>
+                        <span className="text-brand-text1 font-bold">{member.spec}</span>
+                      </div>
+                    </div>
                     
                     {/* LinkedIn Link */}
                     {member.linkedin && (
