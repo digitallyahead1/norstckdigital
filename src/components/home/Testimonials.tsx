@@ -6,7 +6,7 @@ export function Testimonials() {
     name: 'Adebayo Okonkwo',
     role: 'TerraGrow',
     quote:
-    'Northstack rebuilt our entire digital pipeline. We saw a 312% jump in qualified leads within 90 days.',
+    'Norstack rebuilt our entire digital pipeline. We saw a 312% jump in qualified leads within 90 days.',
     initials: 'AO',
     gradient: 'from-[#0B2415] to-[#143D25]'
   },

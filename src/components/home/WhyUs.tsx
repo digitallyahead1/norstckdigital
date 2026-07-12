@@ -31,7 +31,7 @@ export function WhyUs() {
           <div className="flex items-center gap-3 mb-5">
             <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
             <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text2">
-              Why Northstack
+              Why Norstack
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-heading font-bold max-w-3xl">
@@ -153,7 +153,7 @@ export function WhyUs() {
 
             <blockquote className="relative z-10">
               <p className="text-brand-text1 font-heading font-medium italic text-lg md:text-xl leading-relaxed mb-4">
-                "Northstack didn't just build us a website; they built a lead
+                "Norstack didn't just build us a website; they built a lead
                 generation machine that transformed our business trajectory."
               </p>
               <footer className="text-[9px] font-bold uppercase tracking-widest text-brand-text3">

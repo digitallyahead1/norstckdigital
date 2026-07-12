@@ -51,7 +51,7 @@ export function Contact() {
                     Email
                   </div>
                   <div className="text-lg font-medium text-brand-text1">
-                    hello@northstackdigital.com
+                    hello@norstackdigital.com
                   </div>
                 </div>
               </div>
@@ -65,8 +65,9 @@ export function Contact() {
                   <div className="text-[10px] font-bold text-brand-text3 uppercase tracking-widest mb-1">
                     Phone
                   </div>
-                  <div className="text-lg font-medium text-brand-text1">
-                    +234 800 000 0000
+                  <div className="text-lg font-medium text-brand-text1 flex flex-col">
+                    <a href="tel:+2347067382927" className="hover:text-brand-gold transition-colors">+234 706 738 2927</a>
+                    <a href="tel:+2349056038321" className="hover:text-brand-gold transition-colors">+234 905 603 8321</a>
                   </div>
                 </div>
               </div>
@@ -89,7 +90,7 @@ export function Contact() {
 
             <div className="bg-brand-surface2 border border-brand-border1 rounded-2xl p-8">
               <div className="text-sm font-bold text-brand-text1 mb-3 flex items-center gap-2">
-                <span>📍</span> Lagos, Nigeria &middot; Remote-friendly
+                <span>📍</span> Abuja, Nigeria &middot; Remote-friendly
               </div>
               <p className="text-sm text-brand-text2">
                 Response time: Within 24 hours during business days (GMT+1).

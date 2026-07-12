@@ -62,7 +62,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
           </div>
           <div className="flex flex-col justify-center">
             <span className="text-sm font-heading font-black tracking-wider text-white leading-none">
-              North<span className="text-brand-gold">stack</span>
+              Nor<span className="text-brand-gold">stack</span>
             </span>
             <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-1">
               Digital Solutions

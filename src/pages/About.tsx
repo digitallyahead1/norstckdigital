@@ -1,37 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Linkedin } from 'lucide-react';
+
 export function About() {
   const team = [
-  {
-    name: 'David Osei',
-    role: 'Founder / CEO',
-    gradient: 'from-[#1A1A1A] to-[#2D2D2D]'
-  },
-  {
-    name: 'Amara Nwosu',
-    role: 'Head of Design',
-    gradient: 'from-[#2A1B1B] to-[#3D2B2B]'
-  },
-  {
-    name: 'Kolade Ojo',
-    role: 'Lead Engineer',
-    gradient: 'from-[#1B2A2A] to-[#2B3D3D]'
-  },
-  {
-    name: 'Zara Abdullahi',
-    role: 'Growth Strategist',
-    gradient: 'from-[#2A2A1B] to-[#3D3D2B]'
-  },
-  {
-    name: 'Tunde Eke',
-    role: 'Automation Lead',
-    gradient: 'from-[#1B1B2A] to-[#2B2B3D]'
-  },
-  {
-    name: 'Ngozi Ike',
-    role: 'Project Manager',
-    gradient: 'from-[#2A1B2A] to-[#3D2B3D]'
-  }];
+    {
+      name: 'Usman Bashir Sani',
+      role: 'Director',
+      spec: 'Software Engineer',
+      image: '/usman.jpg',
+      linkedin: 'https://linkedin.com/in/usman-bashir-sani-334768220'
+    },
+    {
+      name: 'Jeremia Idamah',
+      role: 'Director',
+      spec: 'Digital Marketing',
+      image: '/jeremia.png'
+    },
+    {
+      name: 'Precious',
+      role: 'Secretary',
+      spec: 'Software Engineer',
+      image: '/precious.png'
+    }
+  ];
 
   return (
     <div className="pt-32 pb-32">
@@ -88,7 +80,7 @@ export function About() {
               </div>
 
               <h2 className="text-3xl font-heading font-bold mb-3">
-                Northstack Digital
+                Norstack Digital
               </h2>
               <p className="text-brand-text2 mb-12 font-editorial text-2xl">
                 Where Brands Gain Leverage
@@ -144,7 +136,7 @@ export function About() {
             className="space-y-8 text-brand-text2 text-lg leading-relaxed font-light">
             
             <p>
-              Northstack Digital was founded in Lagos in 2020 on a simple
+              Norstack Digital was founded in Abuja in 2020 on a simple
               observation: most agencies build websites that look pretty but do
               absolutely nothing for the bottom line. They treat digital assets
               as digital brochures, not business systems.
@@ -196,32 +188,57 @@ export function About() {
             </div>
             <h2 className="text-4xl md:text-5xl font-heading font-bold">
               The <span className="font-editorial text-brand-gold">Minds</span>{' '}
-              Behind Northstack
+              Behind Norstack
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, i) =>
             <div
               key={i}
-              className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer">
+              className="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer border border-brand-border1 bg-brand-surface1 hover:border-brand-gold/30 transition-colors duration-500">
               
                 {/* Gold Ring Hover Effect */}
-                <div className="absolute inset-0 border-2 border-brand-gold rounded-2xl opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-lux z-20 pointer-events-none"></div>
+                <div className="absolute inset-0 border-2 border-brand-gold rounded-3xl opacity-0 scale-[0.98] group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-lux z-20 pointer-events-none"></div>
 
-                {/* Background Gradient */}
-                <div
-                className={`absolute inset-0 bg-gradient-to-br ${member.gradient} group-hover:scale-105 transition-transform duration-700 ease-lux z-0`}>
-              </div>
+                {/* Profile Image */}
+                <div className="absolute inset-0 z-0 bg-brand-surface2">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-lux filter grayscale contrast-[1.1] group-hover:grayscale-0"
+                  />
+                  {/* Subtle Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/15 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+                </div>
 
-                {/* Content */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-end z-10 bg-gradient-to-t from-brand-bg/80 to-transparent">
-                  <h4 className="font-heading font-bold text-brand-text1 text-lg mb-1">
-                    {member.name}
-                  </h4>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-brand-text3">
-                    {member.role}
-                  </p>
+                {/* Content Overlay */}
+                <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+                  <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-brand-gold mb-2">
+                      {member.role}
+                    </p>
+                    <h4 className="font-heading font-bold text-brand-text1 text-2xl mb-1">
+                      {member.name}
+                    </h4>
+                    <p className="text-xs text-brand-text3 font-medium uppercase tracking-wider mb-4">
+                      {member.spec}
+                    </p>
+                    
+                    {/* LinkedIn Link */}
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs font-semibold text-brand-text1 hover:text-brand-gold transition-colors duration-300 pointer-events-auto"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Linkedin size={14} className="text-brand-gold" />
+                        <span>Connect on LinkedIn</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             )}

@@ -205,7 +205,7 @@ export function Hero({ onNavigate }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.25 }}
               className="text-[13.5px] md:text-[14.5px] text-slate-200 font-light max-w-lg leading-relaxed text-shadow-sm"
             >
-              Northstack Digital Solutions is a technology company that builds premium websites,
+              Norstack Digital Solutions is a technology company that builds premium websites,
               custom software, AI automation systems, SEO visibility, and digital
               growth engines — so your business works smarter and scales faster.
             </motion.p>
@@ -307,7 +307,7 @@ export function Hero({ onNavigate }: HeroProps) {
                   </div>
                   <div>
                     <div className="text-[10px] font-black text-brand-text1 uppercase tracking-wider">
-                      NORTHSTACK<span className="text-[#e53935]"> DIGITAL</span>
+                      NORSTACK<span className="text-[#e53935]"> DIGITAL</span>
                     </div>
                     <div className="text-[8px] font-bold text-slate-300 uppercase tracking-widest">
                       Digital Solutions

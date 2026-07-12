@@ -9,7 +9,7 @@ export function Footer({ onNavigate }: FooterProps) {
         {/* Massive Wordmark */}
         <div className="w-full overflow-hidden mb-16">
           <h2 className="text-[clamp(4rem,18vw,16rem)] font-heading font-extrabold leading-[0.85] tracking-[-0.04em] text-brand-text1/5 select-none">
-            NORTHSTACK
+            NORSTACK
           </h2>
         </div>
 
@@ -19,7 +19,7 @@ export function Footer({ onNavigate }: FooterProps) {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="text-xl font-heading font-extrabold tracking-tight text-brand-text1 mb-6">
-              North<span className="text-brand-gold">stack</span>
+              Nor<span className="text-brand-gold">stack</span>
             </div>
             <p className="text-brand-text2 text-sm leading-relaxed mb-8 max-w-xs">
               Where brands gain leverage. Premium digital systems built for
@@ -79,12 +79,12 @@ export function Footer({ onNavigate }: FooterProps) {
               Contact
             </h4>
             <ul className="space-y-4 text-sm text-brand-text1 font-medium">
-              <li>Lagos, Nigeria</li>
+              <li>Abuja, Nigeria</li>
               <li className="hover:text-brand-gold transition-colors cursor-pointer">
-                hello@northstackdigital.com
+                hello@norstackdigital.com
               </li>
-              <li className="hover:text-brand-gold transition-colors cursor-pointer">
-                +234 800 000 0000
+              <li className="hover:text-brand-gold transition-colors">
+                <a href="tel:+2347067382927" className="hover:underline">+234 706 738 2927</a>, <a href="tel:+2349056038321" className="hover:underline">+234 905 603 8321</a>
               </li>
             </ul>
             <button
@@ -101,13 +101,16 @@ export function Footer({ onNavigate }: FooterProps) {
 
         <div className="pt-8 border-t border-brand-border1 flex flex-col md:flex-row items-center justify-between text-[10px] uppercase tracking-[0.1em] text-brand-text3 font-bold">
           <p>
-            &copy; {new Date().getFullYear()} Northstack Digital. All rights
+            &copy; {new Date().getFullYear()} Norstack Digital. All rights
             reserved.
           </p>
           <p className="mt-4 md:mt-0">
             Built with <span className="text-brand-gold text-sm">♦</span> in
             Nigeria
           </p>
+        </div>
+        <div className="mt-8 text-center text-[9px] uppercase tracking-[0.15em] text-brand-text3/50 font-bold border-t border-brand-border1/30 pt-6">
+          developed by Norstack Digital IT Team
         </div>
       </div>
     </footer>);

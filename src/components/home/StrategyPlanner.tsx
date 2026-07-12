@@ -170,7 +170,7 @@ export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
                 {isTyping && <span className="w-1.5 h-3 bg-brand-gold animate-pulse inline-block" />}
               </div>
               <div className="text-[8px] text-brand-text3/50 text-right uppercase tracking-widest">
-                Northstack Configurator v1.4
+                Norstack Configurator v1.4
               </div>
             </div>
           </div>

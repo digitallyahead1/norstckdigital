@@ -44,7 +44,7 @@ export function SystemSimulator() {
     
     const steps = [
       { node: 0, log: '📥 Triggers: New customer form submitted' },
-      { node: 1, log: '⚙️ Parsing request: Initializing Northstack core backend routing API' },
+      { node: 1, log: '⚙️ Parsing request: Initializing Norstack core backend routing API' },
       { node: 2, log: '💼 CRM logged: Lead synced to Enterprise Hub database' },
       { node: 3, log: '📱 Client feedback: Sending localized WhatsApp/Email thank-you confirmation' },
       { node: 4, log: '🔔 Team alert: Direct Slack channel notification pushed to Sales' },
@@ -270,7 +270,7 @@ export function SystemSimulator() {
                       <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
                     </div>
                     <span className="text-[10px] text-brand-text3 font-bold tracking-widest uppercase">
-                      Northstack Core - Sandbox Form
+                      Norstack Core - Sandbox Form
                     </span>
                   </div>
 
@@ -501,8 +501,8 @@ export function SystemSimulator() {
                           NS
                         </div>
                         <div>
-                          <div className="text-[9px] font-extrabold text-brand-text1 leading-tight">Northstack Pay</div>
-                          <div className="text-[7px] text-brand-text3 leading-none uppercase tracking-wider">Lagos Developer Sandbox</div>
+                          <div className="text-[9px] font-extrabold text-brand-text1 leading-tight">Norstack Pay</div>
+                          <div className="text-[7px] text-brand-text3 leading-none uppercase tracking-wider">Abuja Developer Sandbox</div>
                         </div>
                       </div>
                       <div className="relative">
