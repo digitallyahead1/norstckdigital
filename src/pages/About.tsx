@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin } from 'lucide-react';
+import { Linkedin, ExternalLink } from 'lucide-react';
 
 export function About() {
   const team = [
@@ -10,134 +10,82 @@ export function About() {
       spec: 'Software Engineering, AI Solutions, Full-Stack Development & Digital Innovation',
       image: '/usman.jpg',
       linkedin: 'https://linkedin.com/in/usman-bashir-sani-334768220',
-      bio: 'Usman Bashir Sani is the Director of NORSTACK-INNOVATIONS LTD and a Computer Science graduate with extensive experience in software engineering and digital transformation. He specializes in designing and developing scalable web and mobile applications, AI-powered solutions, cybersecurity systems, and FinTech platforms.'
+      bio: 'Director of NORSTACK-INNOVATIONS LTD and Computer Science graduate with extensive experience in software engineering and digital transformation. Specializes in scalable web & mobile apps, AI-powered solutions, cybersecurity systems, and FinTech platforms.',
+      index: '01'
     },
     {
       name: 'Jeremiah Odeh Idama',
       role: 'Founder & Lead Digital Strategist',
       spec: 'Digital Marketing & Business Strategy',
       image: '/jeremia.jpg',
-      bio: 'Jeremiah Odeh Idama is the Founder & Lead Digital Strategist at Northstack Digital, with over 5 years of experience in digital marketing and business strategy. He specializes in building data-driven marketing systems, strengthening brand positioning, and helping businesses generate quality leads and achieve sustainable growth.'
+      linkedin: null as string | null,
+      bio: 'Founder & Lead Digital Strategist at Northstack Digital with 5+ years of experience. Specializes in building data-driven marketing systems, brand positioning, and helping businesses generate quality leads and achieve sustainable growth.',
+      index: '02'
     },
     {
       name: 'Precious',
       role: 'Co-Founder & Software Engineer',
       spec: 'Full-Stack Development & Site Reliability Engineering',
       image: '/precious.jpg',
-      bio: 'Precious is the Co-Founder & Software Engineer at Norstack Digital, with extensive experience in full-stack development and site reliability engineering. He specializes in building scalable web applications, architecting cloud infrastructure, and designing reliable network systems.'
+      linkedin: null as string | null,
+      bio: 'Co-Founder & Software Engineer at Norstack Digital with extensive experience in full-stack development and site reliability engineering. Specializes in scalable web apps, cloud infrastructure, and reliable network systems.',
+      index: '03'
     }
   ];
 
   return (
     <div className="pt-32 pb-32">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+
+        {/* ── Page Heading ── */}
         <div className="mb-24">
           <motion.h1
-            initial={{
-              opacity: 0,
-              y: 20
-            }}
-            animate={{
-              opacity: 1,
-              y: 0
-            }}
-            transition={{
-              duration: 0.8
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-heading font-extrabold mb-4">
-            
             We Engineer <br />
-            <span className="font-editorial text-brand-gold">
-              Digital Leverage
-            </span>
+            <span className="font-editorial text-brand-gold">Digital Leverage</span>
           </motion.h1>
         </div>
 
-        {/* Story Section */}
+        {/* ── Story Section ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32 items-center">
           {/* Left: Visual Panel */}
           <motion.div
-            initial={{
-              opacity: 0,
-              x: -40
-            }}
-            animate={{
-              opacity: 1,
-              x: 0
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2
-            }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="relative bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-10 md:p-14 overflow-hidden">
-            
-            {/* Radial Glow */}
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-brand-gold/20 blur-[100px] rounded-full pointer-events-none"></div>
-
             <div className="relative z-10">
-              {/* Emblem */}
               <div className="w-32 h-32 rounded-[2rem] bg-gradient-to-br from-brand-gold to-brand-goldDim flex items-center justify-center mb-12 shadow-2xl">
-                <span className="text-7xl font-heading font-extrabold text-brand-bg">
-                  N
-                </span>
+                <span className="text-7xl font-heading font-extrabold text-brand-bg">N</span>
               </div>
-
-              <h2 className="text-3xl font-heading font-bold mb-3">
-                Norstack Digital
-              </h2>
-              <p className="text-brand-text2 mb-12 font-editorial text-2xl">
-                Where Brands Gain Leverage
-              </p>
-
+              <h2 className="text-3xl font-heading font-bold mb-3">Norstack Digital</h2>
+              <p className="text-brand-text2 mb-12 font-editorial text-2xl">Where Brands Gain Leverage</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                {
-                  icon: '🎯',
-                  text: 'Strategy-First'
-                },
-                {
-                  icon: '⚡',
-                  text: 'Performance-Obsessed'
-                },
-                {
-                  icon: '🤝',
-                  text: 'Long-Term Partners'
-                },
-                {
-                  icon: '🚀',
-                  text: 'Built to Scale'
-                }].
-                map((pill, i) =>
-                <div
-                  key={i}
-                  className="bg-brand-surface2 border border-brand-border1 rounded-xl px-5 py-4 flex items-center space-x-4">
-                  
+                  { icon: '🎯', text: 'Strategy-First' },
+                  { icon: '⚡', text: 'Performance-Obsessed' },
+                  { icon: '🤝', text: 'Long-Term Partners' },
+                  { icon: '🚀', text: 'Built to Scale' }
+                ].map((pill, i) => (
+                  <div key={i} className="bg-brand-surface2 border border-brand-border1 rounded-xl px-5 py-4 flex items-center space-x-4">
                     <span className="text-xl">{pill.icon}</span>
-                    <span className="text-xs font-bold uppercase tracking-widest text-brand-text1">
-                      {pill.text}
-                    </span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-brand-text1">{pill.text}</span>
                   </div>
-                )}
+                ))}
               </div>
             </div>
           </motion.div>
 
           {/* Right: Prose */}
           <motion.div
-            initial={{
-              opacity: 0,
-              x: 40
-            }}
-            animate={{
-              opacity: 1,
-              x: 0
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.4
-            }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-8 text-brand-text2 text-lg leading-relaxed font-light">
-            
             <p>
               Norstack Digital was founded in Abuja in 2020 on a simple
               observation: most agencies build websites that look pretty but do
@@ -153,10 +101,8 @@ export function About() {
             <p>
               We partner with ambitious businesses globally to engineer digital
               leverage. We combine deep technical expertise with sharp business
-              acumen to deliver end-to-end solutions that actually move the
-              needle.
+              acumen to deliver end-to-end solutions that actually move the needle.
             </p>
-
             <div className="pt-10 mt-10 border-t border-brand-border1">
               <p className="text-3xl md:text-4xl font-editorial text-brand-gold leading-snug">
                 "Serious systems for serious businesses."
@@ -165,29 +111,18 @@ export function About() {
           </motion.div>
         </div>
 
-        {/* Team Section */}
+        {/* ── Team Section ── */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 40
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-          viewport={{
-            once: true
-          }}
-          transition={{
-            duration: 0.8
-          }}>
-          
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}>
+
+          {/* Section Header */}
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text2">
-                Our Team
-              </span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text2">Our Team</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-heading font-bold">
               The <span className="font-editorial text-brand-gold">Minds</span>{' '}
@@ -195,72 +130,93 @@ export function About() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, i) =>
-            <div
-              key={i}
-              className="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer border border-brand-border1 bg-brand-surface1 hover:border-brand-gold/30 transition-colors duration-500">
-              
-                {/* Gold Ring Hover Effect */}
-                <div className="absolute inset-0 border-2 border-brand-gold rounded-3xl opacity-0 scale-[0.98] group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-lux z-20 pointer-events-none"></div>
+          {/* ── Cards Grid ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {team.map((member, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="group flex flex-col rounded-3xl overflow-hidden border border-brand-border1 bg-brand-surface1 hover:border-brand-gold/40 transition-all duration-500 hover:shadow-[0_0_60px_-10px_rgba(212,175,55,0.15)]"
+              >
+                {/* ── Photo Panel (identical height & structure for all cards) ── */}
+                <div className="relative h-72 overflow-hidden bg-brand-surface2 shrink-0">
 
-                {/* Profile Image */}
-                <div className="absolute inset-0 z-0 bg-brand-surface2">
+                  {/* Numbered badge — top-left */}
+                  <div className="absolute top-4 left-4 z-20 w-9 h-9 rounded-full bg-brand-bg/80 backdrop-blur-sm border border-brand-gold/30 flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-brand-gold">{member.index}</span>
+                  </div>
+
+                  {/* Gold shimmer bar on hover — top edge */}
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* Profile photo */}
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-lux filter grayscale contrast-[1.1] group-hover:grayscale-0"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 ease-in-out group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                   />
-                  {/* Dark Gradient Overlay for perfect readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/70 to-transparent opacity-95 group-hover:opacity-85 transition-opacity duration-500"></div>
+
+                  {/* Bottom fade blending into info panel */}
+                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-brand-surface1 to-transparent"></div>
                 </div>
 
-                {/* Content Overlay */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-                  <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                    <h4 className="font-heading font-bold text-brand-text1 text-2xl mb-3">
-                      {member.name}
-                    </h4>
-                    
-                    {/* Rank / Designation & Specialization Detail Box */}
-                    <div className="flex flex-col gap-2 mb-4 border-t border-brand-border1/40 pt-3">
-                      <div className="flex items-start justify-between text-[10px] uppercase tracking-wider gap-2">
-                        <span className="text-brand-text3 font-medium shrink-0">Designation</span>
-                        <span className="text-brand-gold font-bold text-right">{member.role}</span>
-                      </div>
-                      <div className="flex items-start justify-between text-[10px] uppercase tracking-wider gap-2">
-                        <span className="text-brand-text3 font-medium shrink-0">Specialization</span>
-                        <span className="text-brand-text1 font-bold text-right">{member.spec}</span>
-                      </div>
+                {/* ── Info Panel (identical layout for all cards) ── */}
+                <div className="flex flex-col flex-1 p-7">
+
+                  {/* Name */}
+                  <h3 className="font-heading font-bold text-brand-text1 text-xl mb-4 leading-tight">
+                    {member.name}
+                  </h3>
+
+                  {/* Designation + Specialization rows */}
+                  <div className="space-y-3 mb-5 pb-5 border-b border-brand-border1/50">
+                    <div className="flex items-start gap-3">
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-brand-text3 mt-0.5 shrink-0 w-[4.5rem]">Designation</span>
+                      <span className="text-[11px] font-bold text-brand-gold leading-snug">{member.role}</span>
                     </div>
-
-                    {/* Bio - revealed on hover */}
-                    {member.bio && (
-                      <p className="text-[11px] text-brand-text2 leading-relaxed mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-4">
-                        {member.bio}
-                      </p>
-                    )}
-                    
-                    {/* LinkedIn Link */}
-                    {member.linkedin && (
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-semibold text-brand-text1 hover:text-brand-gold transition-colors duration-300 pointer-events-auto"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Linkedin size={14} className="text-brand-gold" />
-                        <span>Connect on LinkedIn</span>
-                      </a>
-                    )}
+                    <div className="flex items-start gap-3">
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-brand-text3 mt-0.5 shrink-0 w-[4.5rem]">Spec.</span>
+                      <span className="text-[11px] font-semibold text-brand-text1 leading-snug">{member.spec}</span>
+                    </div>
                   </div>
+
+                  {/* Bio — always visible */}
+                  <p className="text-[12px] text-brand-text2 leading-relaxed flex-1 mb-6">
+                    {member.bio}
+                  </p>
+
+                  {/* Footer row: LinkedIn or brand tag */}
+                  {member.linkedin ? (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[11px] font-bold text-brand-text2 hover:text-brand-gold transition-colors duration-300 group/link mt-auto"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-brand-surface2 border border-brand-border1 flex items-center justify-center group-hover/link:border-brand-gold/50 transition-colors duration-300">
+                        <Linkedin size={13} className="text-brand-gold" />
+                      </div>
+                      <span>Connect on LinkedIn</span>
+                      <ExternalLink size={10} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
+                    </a>
+                  ) : (
+                    <div className="mt-auto">
+                      <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-text3">
+                        <div className="w-5 h-px bg-brand-gold/40"></div>
+                        Norstack Digital
+                      </span>
+                    </div>
+                  )}
                 </div>
-              </div>
-            )}
+              </motion.div>
+            ))}
           </div>
+
         </motion.div>
       </div>
-    </div>);
-
+    </div>
+  );
 }
