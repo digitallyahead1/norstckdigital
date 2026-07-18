@@ -6,22 +6,25 @@ export function About() {
   const team = [
     {
       name: 'Usman Bashir Sani',
-      role: 'Director',
-      spec: 'Software Engineer',
+      role: 'Founder & Director | Software Engineer',
+      spec: 'Software Engineering, AI Solutions, Full-Stack Development & Digital Innovation',
       image: '/usman.jpg',
-      linkedin: 'https://linkedin.com/in/usman-bashir-sani-334768220'
+      linkedin: 'https://linkedin.com/in/usman-bashir-sani-334768220',
+      bio: 'Usman Bashir Sani is the Director of NORSTACK-INNOVATIONS LTD and a Computer Science graduate with extensive experience in software engineering and digital transformation. He specializes in designing and developing scalable web and mobile applications, AI-powered solutions, cybersecurity systems, and FinTech platforms.'
     },
     {
-      name: 'Jeremia Idamah',
-      role: 'Director',
-      spec: 'Digital Marketing',
-      image: '/jeremia.png'
+      name: 'Jeremiah Odeh Idama',
+      role: 'Founder & Lead Digital Strategist',
+      spec: 'Digital Marketing & Business Strategy',
+      image: '/jeremia.jpg',
+      bio: 'Jeremiah Odeh Idama is the Founder & Lead Digital Strategist at Northstack Digital, with over 5 years of experience in digital marketing and business strategy. He specializes in building data-driven marketing systems, strengthening brand positioning, and helping businesses generate quality leads and achieve sustainable growth.'
     },
     {
       name: 'Precious',
-      role: 'Secretary',
-      spec: 'Software Engineer',
-      image: '/precious.png'
+      role: 'Co-Founder & Software Engineer',
+      spec: 'Full-Stack Development & Site Reliability Engineering',
+      image: '/precious.jpg',
+      bio: 'Precious is the Co-Founder & Software Engineer at Norstack Digital, with extensive experience in full-stack development and site reliability engineering. He specializes in building scalable web applications, architecting cloud infrastructure, and designing reliable network systems.'
     }
   ];
 
@@ -221,15 +224,22 @@ export function About() {
                     
                     {/* Rank / Designation & Specialization Detail Box */}
                     <div className="flex flex-col gap-2 mb-4 border-t border-brand-border1/40 pt-3">
-                      <div className="flex items-center justify-between text-[10px] uppercase tracking-wider">
-                        <span className="text-brand-text3 font-medium">Designation / Rank</span>
-                        <span className="text-brand-gold font-bold">{member.role}</span>
+                      <div className="flex items-start justify-between text-[10px] uppercase tracking-wider gap-2">
+                        <span className="text-brand-text3 font-medium shrink-0">Designation</span>
+                        <span className="text-brand-gold font-bold text-right">{member.role}</span>
                       </div>
-                      <div className="flex items-center justify-between text-[10px] uppercase tracking-wider">
-                        <span className="text-brand-text3 font-medium">Specialization</span>
-                        <span className="text-brand-text1 font-bold">{member.spec}</span>
+                      <div className="flex items-start justify-between text-[10px] uppercase tracking-wider gap-2">
+                        <span className="text-brand-text3 font-medium shrink-0">Specialization</span>
+                        <span className="text-brand-text1 font-bold text-right">{member.spec}</span>
                       </div>
                     </div>
+
+                    {/* Bio - revealed on hover */}
+                    {member.bio && (
+                      <p className="text-[11px] text-brand-text2 leading-relaxed mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-4">
+                        {member.bio}
+                      </p>
+                    )}
                     
                     {/* LinkedIn Link */}
                     {member.linkedin && (
