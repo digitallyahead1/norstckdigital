@@ -59,8 +59,8 @@ export function About() {
             className="relative bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-10 md:p-14 overflow-hidden">
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-brand-gold/20 blur-[100px] rounded-full pointer-events-none"></div>
             <div className="relative z-10">
-              <div className="w-32 h-32 rounded-[2rem] bg-gradient-to-br from-brand-gold to-brand-goldDim flex items-center justify-center mb-12 shadow-2xl">
-                <span className="text-7xl font-heading font-extrabold text-brand-bg">N</span>
+              <div className="w-32 h-32 rounded-[2rem] bg-gradient-to-br from-[#00d2ff] via-[#3b82f6] to-[#a855f7] flex items-center justify-center mb-12 shadow-2xl">
+                <span className="text-7xl font-heading font-extrabold text-white">N</span>
               </div>
               <h2 className="text-3xl font-heading font-bold mb-3">Norstack Digital</h2>
               <p className="text-brand-text2 mb-12 font-editorial text-2xl">Where Brands Gain Leverage</p>
@@ -139,7 +139,7 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="group flex flex-col rounded-3xl overflow-hidden border border-brand-border1 bg-brand-surface1 hover:border-brand-gold/40 transition-all duration-500 hover:shadow-[0_0_60px_-10px_rgba(212,175,55,0.15)]"
+                className="group flex flex-col rounded-3xl overflow-hidden border border-brand-border1 bg-brand-surface1 hover:border-brand-gold/40 transition-all duration-500 hover:shadow-[0_0_60px_-10px_rgba(0,210,255,0.2)]"
               >
                 {/* ── Photo Panel (identical height & structure for all cards) ── */}
                 <div className="relative h-72 overflow-hidden bg-brand-surface2 shrink-0">

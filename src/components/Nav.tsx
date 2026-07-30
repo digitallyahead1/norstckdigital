@@ -55,16 +55,28 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
           onClick={() => handleNavClick('home')}
           className="flex items-center gap-3 text-left group"
         >
-          {/* Modern Geometric Overlapping Logo Mark */}
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-[#0c1e3b] to-[#040e24] border border-brand-border2/60 flex items-center justify-center overflow-hidden shadow-md group-hover:border-brand-gold/50 transition-all duration-300">
-            <div className="absolute w-3.5 h-3.5 rounded border border-brand-gold rotate-45 transform -translate-x-1 -translate-y-1 opacity-90" />
-            <div className="absolute w-3.5 h-3.5 rounded border border-red-500 rotate-45 transform translate-x-1 translate-y-1 opacity-90 mix-blend-screen" />
+          {/* Modern Geometric Interlocking Logo Mark */}
+          <div className="relative w-10 h-10 rounded-[14px] bg-gradient-to-b from-[#08132b] to-[#040916] border border-[#00d2ff]/30 flex items-center justify-center shadow-[0_0_20px_rgba(0,210,255,0.15)] group-hover:border-[#00d2ff]/60 transition-all duration-300">
+            <svg width="26" height="26" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" stroke="url(#navCyanGrad)" strokeWidth="3.5" />
+              <rect x="15" y="15" width="18" height="18" rx="5" transform="rotate(45 24 24)" stroke="url(#navPurpleGrad)" strokeWidth="3.5" opacity="0.95" />
+              <defs>
+                <linearGradient id="navCyanGrad" x1="0" y1="0" x2="30" y2="30">
+                  <stop offset="0%" stopColor="#00d2ff" />
+                  <stop offset="100%" stopColor="#3b82f6" />
+                </linearGradient>
+                <linearGradient id="navPurpleGrad" x1="0" y1="0" x2="30" y2="30">
+                  <stop offset="0%" stopColor="#8b5cf6" />
+                  <stop offset="100%" stopColor="#c084fc" />
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
           <div className="flex flex-col justify-center">
-            <span className="text-sm font-heading font-black tracking-wider text-white leading-none">
-              Nor<span className="text-brand-gold">stack</span>
+            <span className="text-base font-heading font-black tracking-wider text-white leading-none">
+              Nor<span className="bg-gradient-to-r from-[#00d2ff] via-[#3b82f6] to-[#a855f7] bg-clip-text text-transparent">stack</span>
             </span>
-            <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-1">
+            <span className="text-[8px] font-bold text-slate-300 uppercase tracking-[0.22em] mt-1">
               Digital Solutions
             </span>
           </div>

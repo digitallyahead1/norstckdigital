@@ -211,7 +211,7 @@ export function Services({ onNavigate }: ServicesProps) {
           }}
           className="mt-32 bg-brand-surface2 border border-brand-border1 rounded-[2rem] p-16 text-center relative overflow-hidden">
           
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,168,76,0.05)_0%,transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,210,255,0.08)_0%,transparent_70%)]"></div>
           <h2 className="text-4xl font-heading font-bold mb-6 relative z-10">
             Not sure what you need?
           </h2>

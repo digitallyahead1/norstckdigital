@@ -121,12 +121,12 @@ export function Pricing({ onNavigate }: PricingProps) {
               duration: 0.6,
               delay: 0.2
             }}
-            className="relative bg-brand-surface2 border border-brand-gold rounded-[2rem] p-10 flex flex-col h-full transform lg:-translate-y-4 shadow-[0_20px_60px_rgba(201,168,76,0.05)]">
+            className="relative bg-brand-surface2 border border-brand-gold rounded-[2rem] p-10 flex flex-col h-full transform lg:-translate-y-4 shadow-[0_20px_60px_rgba(0,210,255,0.15)]">
             
             {/* Gradient Top Line */}
-            <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent rounded-t-full"></div>
+            <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-[#00d2ff] to-[#a855f7] rounded-t-full"></div>
 
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-bg text-[10px] font-bold uppercase tracking-widest py-1.5 px-6 rounded-full">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#00d2ff] to-[#a855f7] text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-6 rounded-full shadow-md">
               Most Popular
             </div>
 

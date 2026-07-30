@@ -18,7 +18,7 @@ export function Button({
       whileTap={{
         scale: 0.98
       }}
-      className={`group relative inline-flex items-center justify-between gap-6 rounded-full px-6 py-3.5 text-xs font-bold uppercase tracking-[0.15em] transition-colors duration-500 ease-lux ${isPrimary ? 'bg-brand-gold text-white hover:bg-brand-goldHi shadow-[0_0_20px_rgba(198,40,40,0.25)]' : 'border border-brand-border1 bg-transparent text-brand-text1 hover:border-brand-border2 hover:bg-brand-surface1'} ${className}`}
+      className={`group relative inline-flex items-center justify-between gap-6 rounded-full px-6 py-3.5 text-xs font-bold uppercase tracking-[0.15em] transition-all duration-500 ease-lux ${isPrimary ? 'bg-gradient-to-r from-[#00d2ff] via-[#2563eb] to-[#a855f7] text-white hover:opacity-95 shadow-[0_0_20px_rgba(0,210,255,0.35)]' : 'border border-brand-border1 bg-transparent text-brand-text1 hover:border-brand-border2 hover:bg-brand-surface1'} ${className}`}
       {...props}>
       
       <span>{children}</span>

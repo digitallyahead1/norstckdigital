@@ -139,7 +139,7 @@ export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
                   onClick={() => setSelectedChallenge(c)}
                   className={`w-full text-left p-5 rounded-2xl border transition-all duration-500 ease-lux flex items-center justify-between group ${
                     isSelected
-                      ? 'bg-brand-surface1 border-brand-gold/60 shadow-[0_0_20px_rgba(201,168,76,0.1)]'
+                      ? 'bg-brand-surface1 border-brand-gold/60 shadow-[0_0_20px_rgba(0,210,255,0.2)]'
                       : 'bg-brand-surface2/40 border-brand-border1 hover:border-brand-border2 hover:bg-brand-surface2/60'
                   }`}
                 >

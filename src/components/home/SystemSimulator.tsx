@@ -412,7 +412,7 @@ export function SystemSimulator() {
                           <motion.div
                             animate={{
                               scale: isCurrent ? 1.15 : 1,
-                              boxShadow: isCurrent ? '0 0 25px rgba(201, 168, 76, 0.4)' : 'none'
+                              boxShadow: isCurrent ? '0 0 25px rgba(0, 210, 255, 0.5)' : 'none'
                             }}
                             className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center border transition-colors duration-500 ${
                               isCurrent

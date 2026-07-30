@@ -47,9 +47,9 @@ const services = [
     title: 'UI/UX Design',
     desc: 'Research-backed, conversion-focused UI.',
     tag: 'DESIGN',
-    tagStyles: 'border-red-500/40 text-red-300 bg-red-500/10',
-    iconBg: 'bg-red-600/20',
-    iconColor: 'text-red-300',
+    tagStyles: 'border-purple-500/40 text-purple-300 bg-purple-500/10',
+    iconBg: 'bg-purple-600/20',
+    iconColor: 'text-purple-300',
   },
   {
     icon: TrendingUp,
@@ -159,7 +159,7 @@ export function Hero({ onNavigate }: HeroProps) {
         <motion.div
           animate={{ x: ['5%', '-10%', '5%'], y: ['10%', '-5%', '10%'] }}
           transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          className="absolute bottom-[10%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-red-500/5 blur-[130px]"
+          className="absolute bottom-[10%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-purple-600/10 blur-[130px]"
         />
       </div>
 
@@ -190,7 +190,7 @@ export function Hero({ onNavigate }: HeroProps) {
               <h1 className="text-[clamp(1.9rem,4.2vw,3.2rem)] leading-[1.15] tracking-[-0.025em] font-extrabold text-brand-text1">
                 {normalTyped}
                 {highlightTyped && (
-                  <span className={currentPhraseIdx === 0 ? "text-brand-gold" : "text-[#ef5350]"}>
+                  <span className={currentPhraseIdx === 0 ? "text-brand-gold" : "text-purple-400"}>
                     {highlightTyped}
                   </span>
                 )}
@@ -217,12 +217,12 @@ export function Hero({ onNavigate }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.35 }}
               className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
             >
-              {/* Primary Red CTA */}
+              {/* Primary Cyan/Purple CTA */}
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => onNavigate('contact')}
-                className="group inline-flex items-center gap-3 bg-brand-gold hover:bg-brand-goldHi text-white font-bold text-xs rounded-full px-6 py-3 transition-all duration-300 shadow-[0_0_20px_rgba(198,40,40,0.25)] hover:shadow-[0_0_35px_rgba(198,40,40,0.35)]"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#00d2ff] via-[#2563eb] to-[#a855f7] text-white font-bold text-xs rounded-full px-6 py-3 transition-all duration-300 shadow-[0_0_20px_rgba(0,210,255,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.4)]"
               >
                 Start a Project
                 <ArrowRight
@@ -302,12 +302,12 @@ export function Hero({ onNavigate }: HeroProps) {
               <div className="flex items-center justify-between mb-4 pb-4 border-b border-brand-border2/60">
                 <div className="flex items-center gap-2.5">
                   {/* Logo Circle */}
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#c62828] to-[#1565c0] flex items-center justify-center shadow-lg">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00d2ff] via-[#3b82f6] to-[#a855f7] flex items-center justify-center shadow-lg">
                     <span className="text-white font-extrabold text-xs">N</span>
                   </div>
                   <div>
                     <div className="text-[10px] font-black text-brand-text1 uppercase tracking-wider">
-                      NORSTACK<span className="text-[#e53935]"> DIGITAL</span>
+                      NORSTACK<span className="text-cyan-400"> DIGITAL</span>
                     </div>
                     <div className="text-[8px] font-bold text-slate-300 uppercase tracking-widest">
                       Digital Solutions
