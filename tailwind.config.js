@@ -2,36 +2,38 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-  './index.html',
-  './src/**/*.{js,ts,jsx,tsx}'
-],
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}'
+  ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         brand: {
-          bg: '#030712',
-          surface1: '#0c1e3b',
-          surface2: '#0e2447',
-          surface3: '#122c56',
-          warmDark: '#050811',
-          gold: '#00d2ff',
-          goldHi: '#38bdf8',
-          goldDim: '#0284c7',
-          cyan: '#00d2ff',
-          purple: '#a855f7',
-          violet: '#8b5cf6',
-          blue: '#3b82f6',
-          text1: '#e2e8f0',
-          text2: '#90a1b9',
-          text3: '#45556c',
-          border1: '#163060',
-          border2: '#1e3d75',
+          // All colors reference CSS custom properties so dark/light theme switching works
+          bg:       'var(--bg-0)',
+          surface1: 'var(--bg-1)',
+          surface2: 'var(--bg-2)',
+          surface3: 'var(--bg-3)',
+          warmDark: 'var(--warm-dark)',
+          gold:     'var(--gold)',
+          goldHi:   'var(--gold-hi)',
+          goldDim:  'var(--gold-dim)',
+          cyan:     'var(--gold)',
+          purple:   'var(--purple)',
+          violet:   '#8b5cf6',
+          blue:     'var(--blue)',
+          text1:    'var(--text-1)',
+          text2:    'var(--text-2)',
+          text3:    'var(--text-3)',
+          border1:  'var(--border-1)',
+          border2:  'var(--border-2)',
         }
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Geist', 'sans-serif'],
+        sans:    ['Plus Jakarta Sans', 'Geist', 'sans-serif'],
         heading: ['Plus Jakarta Sans', 'Geist', 'sans-serif'],
-        serif: ['Instrument Serif', 'serif'],
+        serif:   ['Instrument Serif', 'serif'],
       },
       transitionTimingFunction: {
         'lux': 'cubic-bezier(0.22, 1, 0.36, 1)',
@@ -41,7 +43,7 @@ export default {
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0%)' },
+          '0%':   { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         }
       }

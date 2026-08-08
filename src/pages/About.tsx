@@ -26,7 +26,7 @@ export function About() {
       role: 'Software Engineer & Lead DevOps',
       spec: 'Full-Stack Development & Site Reliability Engineering',
       image: '/precious.jpg',
-      objectPosition: '50% 65%',
+      objectPosition: '50% 15%',
       bio: 'Software Engineer at Norstack Digital with extensive experience in full-stack development and site reliability engineering. Specializes in scalable web apps, cloud infrastructure, and reliable network systems.',
       index: '03'
     }

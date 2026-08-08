@@ -130,13 +130,13 @@ export function Portfolio({ onNavigate }: PortfolioProps) {
                   </svg>
                 </div>
 
-                {/* Category Pill */}
-                <div className="absolute bottom-6 left-6 bg-brand-bg/80 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold text-brand-text1 uppercase tracking-widest border border-brand-border1">
+                {/* Category Pill — always dark regardless of theme */}
+                <div className="absolute bottom-6 left-6 bg-[#030712]/80 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold text-[#e2e8f0] uppercase tracking-widest border border-[#163060]">
                   {project.category}
                 </div>
 
-                {/* Visit URL pill */}
-                <div className="absolute bottom-6 right-6 bg-brand-gold/10 backdrop-blur-md border border-brand-gold/30 px-3 py-1.5 rounded-full text-[9px] font-bold text-brand-gold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300">
+                {/* Visit URL pill — always dark regardless of theme */}
+                <div className="absolute bottom-6 right-6 bg-[#00d2ff]/10 backdrop-blur-md border border-[#00d2ff]/30 px-3 py-1.5 rounded-full text-[9px] font-bold text-[#00d2ff] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300">
                   Visit Site ↗
                 </div>
               </div>
@@ -183,7 +183,7 @@ export function Portfolio({ onNavigate }: PortfolioProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-16"
+          className="text-center dark-theme bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-16"
         >
           <h2 className="text-4xl font-heading font-bold mb-8">
             Your Project Could Be Next

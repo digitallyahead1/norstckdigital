@@ -102,9 +102,9 @@ export function Services({ onNavigate }: ServicesProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
-          {/* Sticky Header Column */}
+          {/* Sticky sidebar — always dark regardless of theme */}
           <div className="lg:col-span-3 hidden lg:block relative">
-            <div className="sticky top-32">
+            <div className="sticky top-32 dark-theme bg-brand-surface1 border border-brand-border1 rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text2">
@@ -209,7 +209,7 @@ export function Services({ onNavigate }: ServicesProps) {
           viewport={{
             once: true
           }}
-          className="mt-32 bg-brand-surface2 border border-brand-border1 rounded-[2rem] p-16 text-center relative overflow-hidden">
+          className="mt-32 dark-theme bg-brand-surface2 border border-brand-border1 rounded-[2rem] p-16 text-center relative overflow-hidden">
           
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,210,255,0.08)_0%,transparent_70%)]"></div>
           <h2 className="text-4xl font-heading font-bold mb-6 relative z-10">

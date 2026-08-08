@@ -1,10 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Norstack Digital Agency</title>
+    <!-- Anti-FOUC: apply saved theme class before first paint -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('ns-theme');
+          var root = document.documentElement;
+          root.classList.remove('dark', 'light');
+          root.classList.add(t === 'light' ? 'light' : 'dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

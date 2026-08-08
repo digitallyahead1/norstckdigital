@@ -9,15 +9,16 @@ import { Portfolio } from './pages/Portfolio';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Noise } from './components/ui/Noise';
+import { ThemeProvider } from './context/ThemeContext';
+
 export function App() {
   const [currentPage, setCurrentPage] = useState('home');
+
   const handleNavigate = (page: string) => {
     setCurrentPage(page);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
@@ -36,49 +37,44 @@ export function App() {
         return <Home onNavigate={handleNavigate} />;
     }
   };
+
   const pageVariants = {
-    initial: {
-      opacity: 0,
-      y: 20
-    },
+    initial: { opacity: 0, y: 20 },
     animate: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1]
-      }
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
     },
     exit: {
       opacity: 0,
       y: -20,
-      transition: {
-        duration: 0.4,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    },
   };
+
   return (
-    <div className="min-h-screen flex flex-col bg-brand-bg relative selection:bg-brand-gold/30 selection:text-brand-goldHi">
-      <Noise />
-      <Nav currentPage={currentPage} onNavigate={handleNavigate} />
+    <ThemeProvider>
+      <div className="min-h-screen flex flex-col bg-brand-bg relative">
+        <Noise />
+        <Nav currentPage={currentPage} onNavigate={handleNavigate} />
 
-      <main className="flex-grow relative z-10">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="w-full">
-            
-            {renderPage()}
-          </motion.div>
-        </AnimatePresence>
-      </main>
+        <main className="flex-grow relative z-10">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="w-full"
+            >
+              {renderPage()}
+            </motion.div>
+          </AnimatePresence>
+        </main>
 
-      <Footer onNavigate={handleNavigate} />
-    </div>);
-
+        <Footer onNavigate={handleNavigate} />
+      </div>
+    </ThemeProvider>
+  );
 }

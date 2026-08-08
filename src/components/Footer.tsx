@@ -6,7 +6,7 @@ interface FooterProps {
 }
 export function Footer({ onNavigate }: FooterProps) {
   return (
-    <footer className="bg-brand-bg relative z-10 overflow-hidden pt-32 pb-10">
+    <footer className="bg-brand-bg relative z-10 overflow-hidden pt-32 pb-10 dark-theme">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Massive Wordmark */}
         <div className="w-full overflow-hidden mb-16">

@@ -8,7 +8,10 @@
 
 /* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
-:root {
+/* ─── DARK THEME (default) ─────────────────────────────── */
+:root,
+html.dark,
+.dark-theme {
   --bg-0: #030712;
   --bg-1: #0c1e3b;
   --bg-2: #0e2447;
@@ -24,9 +27,42 @@
   --text-3: #45556c;
   --border-1: #163060;
   --border-2: #1e3d75;
+  color-scheme: dark;
+}
+
+/* ─── LIGHT THEME ──────────────────────────────────────── */
+html.light {
+  --bg-0: #f0f4ff;
+  --bg-1: #dde8f7;
+  --bg-2: #cdd9f0;
+  --bg-3: #bccae8;
+  --warm-dark: #e8eef8;
+  --gold: #0070c0;
+  --gold-hi: #0099e0;
+  --gold-dim: #005aa0;
+  --purple: #7c3aed;
+  --blue: #2563eb;
+  --text-1: #0f172a;
+  --text-2: #334155;
+  --text-3: #64748b;
+  --border-1: #bfcfe8;
+  --border-2: #93b3d8;
+  color-scheme: light;
+}
+
+/* Smooth theme colour transitions — intentionally limited to colour props
+   so this does NOT conflict with Framer Motion transform/opacity animations */
+*:not([style*="transform"]):not([style*="opacity"]) {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 body {
-  @apply bg-brand-bg text-brand-text1 font-sans antialiased overflow-x-hidden selection:bg-brand-gold/30 selection:text-brand-goldHi;
+  @apply bg-brand-bg text-brand-text1 font-sans antialiased overflow-x-hidden;
+}
+::selection {
+  background-color: rgba(0, 210, 255, 0.3);
+  color: var(--gold-hi);
 }
 h1, h2, h3, h4, h5, h6 {
   @apply font-heading;
