@@ -1,43 +1,89 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/ui/Button';
+
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    service: '',
+    budget: '',
+    message: '',
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const serviceMap: Record<string, string> = {
+      full: 'Full Package (End-to-End)',
+      web: 'Website Development',
+      software: 'Software Development',
+      app: 'App Development',
+      marketing: 'Digital Marketing & SEO',
+    };
+
+    const budgetMap: Record<string, string> = {
+      tier1: '₦250k – ₦500k',
+      tier2: '₦500k – ₦1.2M',
+      tier3: '₦1.2M – ₦3M',
+      tier4: '₦3M+',
+    };
+
+    const serviceText = serviceMap[formData.service] || formData.service || 'General Inquiry';
+    const budgetText = budgetMap[formData.budget] || formData.budget || 'Not specified';
+
+    const textMessage = `Hello Northstack Digital,
+
+I have submitted an inquiry via your website contact form:
+
+👤 Name: ${formData.firstName} ${formData.lastName}
+📧 Email: ${formData.email}
+📱 Phone / WhatsApp: ${formData.phone || 'Not provided'}
+🛠️ Service Required: ${serviceText}
+💰 Estimated Budget: ${budgetText}
+
+📝 Project Details:
+${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/2348026495929?text=${encodeURIComponent(textMessage)}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1500);
+      window.open(whatsappUrl, '_blank');
+    }, 600);
   };
+
   return (
     <div className="pt-32 pb-32">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Left: Contact Info */}
           <motion.div
-            initial={{
-              opacity: 0,
-              x: -40
-            }}
-            animate={{
-              opacity: 1,
-              x: 0
-            }}
-            transition={{
-              duration: 0.8
-            }}>
-            
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <h1 className="text-5xl md:text-7xl font-heading font-extrabold mb-8">
               Let's Build Something <br />
               <span className="font-editorial text-brand-gold">Great</span>
             </h1>
             <p className="text-xl text-brand-text2 mb-16 max-w-md font-light">
-              Ready to upgrade your digital infrastructure? Fill out the form,
-              and we'll get back to you within 24 hours to schedule a strategy
-              session.
+              Ready to upgrade your digital infrastructure? Fill out the form below
+              and our team will review your project details immediately.
             </p>
 
             <div className="space-y-6 mb-16">
@@ -84,7 +130,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-[10px] font-bold text-[#25D366] uppercase tracking-widest mb-1">
-                    WhatsApp
+                    WhatsApp Direct
                   </div>
                   <div className="text-lg font-medium text-brand-text1">
                     +234 802 649 5929
@@ -155,76 +201,67 @@ export function Contact() {
 
           {/* Right: Form */}
           <motion.div
-            initial={{
-              opacity: 0,
-              x: 40
-            }}
-            animate={{
-              opacity: 1,
-              x: 0
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2
-            }}
-            className="bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-10 md:p-14">
-            
-            {isSubmitted ?
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.9
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1
-              }}
-              className="h-full flex flex-col items-center justify-center text-center py-20">
-              
-                <div className="w-24 h-24 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-5xl mb-8 border border-brand-gold/20">
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-10 md:p-14"
+          >
+            {isSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="h-full flex flex-col items-center justify-center text-center py-20"
+              >
+                <div className="w-24 h-24 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-5xl mb-8 border border-brand-gold/30">
                   ✓
                 </div>
                 <h3 className="text-3xl font-heading font-bold mb-4">
-                  Message Received
+                  Inquiry Submitted
                 </h3>
-                <p className="text-brand-text2 mb-10 text-lg">
-                  Thank you for reaching out. A strategist will review your
-                  details and contact you shortly.
+                <p className="text-brand-text2 mb-10 text-lg max-w-md">
+                  Thank you for reaching out. Your project details have been received and sent to our team. A strategist will review your inquiry and connect with you shortly.
                 </p>
                 <Button variant="outline" onClick={() => setIsSubmitted(false)}>
                   Send Another Message
                 </Button>
-              </motion.div> :
-
-            <form onSubmit={handleSubmit} className="space-y-10">
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="relative">
                     <input
-                    required
-                    type="text"
-                    id="fname"
-                    className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
-                    placeholder="First Name" />
-                  
+                      required
+                      type="text"
+                      id="fname"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
+                      placeholder="First Name"
+                    />
                     <label
-                    htmlFor="fname"
-                    className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left">
-                    
+                      htmlFor="fname"
+                      className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left"
+                    >
                       First Name
                     </label>
                   </div>
+
                   <div className="relative">
                     <input
-                    required
-                    type="text"
-                    id="lname"
-                    className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
-                    placeholder="Last Name" />
-                  
+                      required
+                      type="text"
+                      id="lname"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
+                      placeholder="Last Name"
+                    />
                     <label
-                    htmlFor="lname"
-                    className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left">
-                    
+                      htmlFor="lname"
+                      className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left"
+                    >
                       Last Name
                     </label>
                   </div>
@@ -232,32 +269,39 @@ export function Contact() {
 
                 <div className="relative">
                   <input
-                  required
-                  type="email"
-                  id="email"
-                  className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
-                  placeholder="Email Address" />
-                
+                    required
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
+                    placeholder="Email Address"
+                  />
                   <label
-                  htmlFor="email"
-                  className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left">
-                  
+                    htmlFor="email"
+                    className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left"
+                  >
                     Email Address
                   </label>
                 </div>
 
                 <div className="relative">
                   <input
-                  type="tel"
-                  id="phone"
-                  className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
-                  placeholder="Phone Number" />
-                
+                    required
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent"
+                    placeholder="WhatsApp Number / Phone"
+                  />
                   <label
-                  htmlFor="phone"
-                  className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left">
-                  
-                    Phone Number
+                    htmlFor="phone"
+                    className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left"
+                  >
+                    WhatsApp Number / Phone
                   </label>
                 </div>
 
@@ -266,7 +310,12 @@ export function Contact() {
                     <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-text3 mb-2">
                       Service Required
                     </label>
-                    <select className="w-full bg-brand-surface2 border border-brand-border1 rounded-xl px-4 py-4 text-sm text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors appearance-none">
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full bg-brand-surface2 border border-brand-border1 rounded-xl px-4 py-4 text-sm text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors appearance-none"
+                    >
                       <option value="">Select a service...</option>
                       <option value="full">Full Package</option>
                       <option value="web">Website Development</option>
@@ -280,9 +329,14 @@ export function Contact() {
                     <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-text3 mb-2">
                       Estimated Budget
                     </label>
-                    <select className="w-full bg-brand-surface2 border border-brand-border1 rounded-xl px-4 py-4 text-sm text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors appearance-none">
+                    <select
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className="w-full bg-brand-surface2 border border-brand-border1 rounded-xl px-4 py-4 text-sm text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors appearance-none"
+                    >
                       <option value="">Select a range...</option>
-                      <option value="tier1">₦350k – ₦500k</option>
+                      <option value="tier1">₦250k – ₦500k</option>
                       <option value="tier2">₦500k – ₦1.2M</option>
                       <option value="tier3">₦1.2M – ₦3M</option>
                       <option value="tier4">₦3M+</option>
@@ -292,44 +346,37 @@ export function Contact() {
 
                 <div className="relative">
                   <textarea
-                  required
-                  id="message"
-                  rows={4}
-                  className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent resize-none"
-                  placeholder="Tell Us About Your Project">
-                </textarea>
+                    required
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="floating-input w-full bg-transparent border-b border-brand-border1 py-3 text-lg text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors placeholder-transparent resize-none"
+                    placeholder="Tell Us About Your Project"
+                  />
                   <label
-                  htmlFor="message"
-                  className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left">
-                  
+                    htmlFor="message"
+                    className="floating-label absolute left-0 top-3 text-brand-text3 text-lg transition-all duration-300 pointer-events-none origin-left"
+                  >
                     Tell Us About Your Project
                   </label>
                 </div>
 
                 <div className="pt-4 flex flex-col gap-4">
                   <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full justify-center !py-5">
-                  
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full justify-center !py-5"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
                   </Button>
-
-                  <a
-                  href="https://wa.me/2348026495929"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 hover:bg-[#25D366] hover:text-white font-bold text-xs uppercase tracking-widest px-6 py-5 rounded-full transition-colors duration-300">
-                  
-                    <span className="text-lg">💬</span>
-                    <span>Chat on WhatsApp</span>
-                  </a>
                 </div>
               </form>
-            }
+            )}
           </motion.div>
         </div>
       </div>
-    </div>);
-
+    </div>
+  );
 }

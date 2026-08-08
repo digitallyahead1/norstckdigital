@@ -1,34 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, ExternalLink } from 'lucide-react';
 
 export function About() {
   const team = [
     {
       name: 'Usman Bashir Sani',
-      role: 'Founder & Director | Software Engineer',
+      role: 'Software Engineering Lead',
       spec: 'Software Engineering, AI Solutions, Full-Stack Development & Digital Innovation',
       image: '/usman.jpg',
-      linkedin: 'https://linkedin.com/in/usman-bashir-sani-334768220',
-      bio: 'Director of NORSTACK-INNOVATIONS LTD and Computer Science graduate with extensive experience in software engineering and digital transformation. Specializes in scalable web & mobile apps, AI-powered solutions, cybersecurity systems, and FinTech platforms.',
+      objectPosition: '50% 10%',
+      bio: 'Computer Science graduate with extensive experience in software engineering and digital transformation. Specializes in scalable web & mobile apps, AI-powered solutions, cybersecurity systems, and FinTech platforms.',
       index: '01'
     },
     {
       name: 'Jeremiah Odeh Idama',
-      role: 'Founder & Lead Digital Strategist',
+      role: 'Lead Digital Strategist',
       spec: 'Digital Marketing & Business Strategy',
       image: '/jeremia.jpg',
-      linkedin: null as string | null,
-      bio: 'Founder & Lead Digital Strategist at Northstack Digital with 5+ years of experience. Specializes in building data-driven marketing systems, brand positioning, and helping businesses generate quality leads and achieve sustainable growth.',
+      objectPosition: '50% 15%',
+      bio: 'Digital Strategist at Northstack Digital with 5+ years of experience. Specializes in building data-driven marketing systems, brand positioning, and helping businesses generate quality leads and achieve sustainable growth.',
       index: '02'
     },
     {
-      name: 'Precious',
-      role: 'Co-Founder & Software Engineer',
+      name: 'Onuigbo Precious',
+      role: 'Software Engineer & Lead DevOps',
       spec: 'Full-Stack Development & Site Reliability Engineering',
       image: '/precious.jpg',
-      linkedin: null as string | null,
-      bio: 'Co-Founder & Software Engineer at Norstack Digital with extensive experience in full-stack development and site reliability engineering. Specializes in scalable web apps, cloud infrastructure, and reliable network systems.',
+      objectPosition: '50% 65%',
+      bio: 'Software Engineer at Norstack Digital with extensive experience in full-stack development and site reliability engineering. Specializes in scalable web apps, cloud infrastructure, and reliable network systems.',
       index: '03'
     }
   ];
@@ -156,7 +155,8 @@ export function About() {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 ease-in-out group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+                    style={{ objectPosition: member.objectPosition }}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                   />
 
                   {/* Bottom fade blending into info panel */}
@@ -188,28 +188,13 @@ export function About() {
                     {member.bio}
                   </p>
 
-                  {/* Footer row: LinkedIn or brand tag */}
-                  {member.linkedin ? (
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[11px] font-bold text-brand-text2 hover:text-brand-gold transition-colors duration-300 group/link mt-auto"
-                    >
-                      <div className="w-7 h-7 rounded-lg bg-brand-surface2 border border-brand-border1 flex items-center justify-center group-hover/link:border-brand-gold/50 transition-colors duration-300">
-                        <Linkedin size={13} className="text-brand-gold" />
-                      </div>
-                      <span>Connect on LinkedIn</span>
-                      <ExternalLink size={10} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
-                    </a>
-                  ) : (
-                    <div className="mt-auto">
-                      <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-text3">
-                        <div className="w-5 h-px bg-brand-gold/40"></div>
-                        Norstack Digital
-                      </span>
-                    </div>
-                  )}
+                  {/* Footer row: brand tag */}
+                  <div className="mt-auto">
+                    <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-text3">
+                      <div className="w-5 h-px bg-brand-gold/40"></div>
+                      Norstack Digital
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             ))}
