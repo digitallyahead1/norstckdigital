@@ -146,6 +146,8 @@ export function Hero({ onNavigate }: HeroProps) {
         className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-center opacity-80 mix-blend-screen pointer-events-none"
         style={{
           backgroundImage: 'url(/hero-network.svg)',
+          willChange: 'transform',
+          transform: 'translateZ(0)',
         }}
       />
 

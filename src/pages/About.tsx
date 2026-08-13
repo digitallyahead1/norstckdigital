@@ -155,6 +155,8 @@ export function About() {
                   <img
                     src={member.image}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     style={{ objectPosition: member.objectPosition }}
                     className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                   />

@@ -52,7 +52,8 @@ html.light {
 
 /* Smooth theme colour transitions — intentionally limited to colour props
    so this does NOT conflict with Framer Motion transform/opacity animations */
-*:not([style*="transform"]):not([style*="opacity"]) {
+a, button, input, textarea, select,
+[class*="border-"], [class*="bg-"], [class*="text-"] {
   transition-property: background-color, border-color, color, fill, stroke, box-shadow;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
@@ -114,4 +115,44 @@ h1, h2, h3, h4, h5, h6 {
 .floating-input:focus ~ .floating-label,
 .floating-input:not(:placeholder-shown) ~ .floating-label {
   @apply -translate-y-5 scale-75 text-brand-gold;
+}
+
+/* ─── Performance: GPU Layer Promotion ─────────────────── */
+/* Promote heavy blur elements to their own compositing layer */
+.backdrop-blur-xl,
+.backdrop-blur-md {
+  will-change: backdrop-filter;
+  transform: translateZ(0);
+}
+
+/* ─── Performance: Reduce paint cost on mobile ──────────── */
+/* Contain sections that don't need interaction reflow */
+section {
+  contain: layout style;
+}
+
+/* ─── Accessibility: Focus visibility ──────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Accessibility: Reduced motion support ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Performance: Optimize font rendering ──────────────── */
+html {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

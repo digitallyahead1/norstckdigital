@@ -179,25 +179,32 @@ export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
           <div className="lg:col-span-7 bg-brand-surface2 border border-brand-border1 rounded-[2.5rem] p-8 md:p-10 shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-48 h-48 bg-brand-gold/5 blur-[50px] rounded-full group-hover:bg-brand-gold/10 transition-colors duration-500" />
             
-            <div className="relative z-10 space-y-8">
-              
-              {/* Output Title */}
-              <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-gold/10 border border-brand-gold/25 text-brand-gold text-[9px] font-bold rounded-full uppercase tracking-wider mb-3">
-                  <Sparkles size={10} /> Live computed roadmap
-                </span>
-                <h3 className="text-2xl md:text-3xl font-heading font-extrabold text-brand-text1 tracking-tight">
-                  {selectedChallenge.title}
-                </h3>
-              </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedChallenge.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 space-y-8"
+              >
+                {/* Output Title */}
+                <div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-gold/10 border border-brand-gold/25 text-brand-gold text-[9px] font-bold rounded-full uppercase tracking-wider mb-3">
+                    <Sparkles size={10} /> Live computed roadmap
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-heading font-extrabold text-brand-text1 tracking-tight">
+                    {selectedChallenge.title}
+                  </h3>
+                </div>
 
-              {/* Stats Row */}
-              <div className="grid grid-cols-2 gap-6 py-6 border-y border-brand-border1/60">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-brand-surface3 border border-brand-border1 flex items-center justify-center text-brand-gold">
-                    <Calendar size={18} />
-                  </div>
-                  <div>
+                {/* Stats Row */}
+                <div className="grid grid-cols-2 gap-6 py-6 border-y border-brand-border1/60">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-brand-surface3 border border-brand-border1 flex items-center justify-center text-brand-gold">
+                      <Calendar size={18} />
+                    </div>
+                    <div>
                     <div className="text-[8px] uppercase tracking-widest text-brand-text3 font-extrabold">Delivery Timeline</div>
                     <div className="text-lg font-bold text-brand-text1 mt-1">{selectedChallenge.timeline}</div>
                   </div>
@@ -257,8 +264,9 @@ export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
               >
                 <Lock size={12} className="group-hover:rotate-12 transition-transform" /> Lock In Strategy Consult
               </button>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
         </div>
       </div>
     </section>

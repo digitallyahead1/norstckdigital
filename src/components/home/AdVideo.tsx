@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 const VIDEO_ID = '-br-v9IY7_A';
 
 const buildSrc = (autoplay: boolean) =>
-  `https://www.youtube.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&color=white&enablejsapi=1${
-    autoplay ? '&autoplay=1&mute=1' : ''
+  `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&color=white&enablejsapi=1${
+    autoplay ? '&autoplay=1' : ''
   }`;
 
 export function AdVideo() {
@@ -166,6 +166,7 @@ export function AdVideo() {
                 className="absolute inset-0 w-full h-full"
                 src={buildSrc(false)}
                 title="Northstack Digital Agency – Brand Video"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 style={{ border: 'none' }}

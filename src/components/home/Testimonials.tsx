@@ -89,6 +89,8 @@ export function Testimonials() {
                     <img
                       src={t.logo}
                       alt={`${t.name} logo`}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-contain p-1"
                     />
                   ) : (

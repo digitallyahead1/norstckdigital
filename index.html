@@ -2,10 +2,59 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- ── Favicon (logo) ──────────────────────────────────────── -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- ── Viewport ─────────────────────────────────────────────── -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Norstack Digital Agency</title>
-    <!-- Anti-FOUC: apply saved theme class before first paint -->
+
+    <!-- ── Primary SEO ──────────────────────────────────────────── -->
+    <title>Norstack Digital | Premium Web & Software Development Agency — Abuja, Nigeria</title>
+    <meta name="description" content="Norstack Digital is a top-rated digital agency in Nigeria. We build premium websites, custom software, mobile apps, SEO systems & AI automation for ambitious brands. Get a free audit today." />
+    <meta name="keywords" content="digital agency Nigeria, web development Abuja, software development Nigeria, mobile app development, SEO Nigeria, UI UX design, business automation, Norstack Digital" />
+    <meta name="author" content="Norstack Digital" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://norstackdigital.com/" />
+
+    <!-- ── Open Graph / Social ──────────────────────────────────── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Norstack Digital" />
+    <meta property="og:title" content="Norstack Digital | Premium Web & Software Development Agency" />
+    <meta property="og:description" content="We build premium websites, custom software, mobile apps, and AI-powered digital systems for ambitious businesses. Strategy-first. Results-driven." />
+    <meta property="og:url" content="https://norstackdigital.com/" />
+    <meta property="og:image" content="https://norstackdigital.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_NG" />
+
+    <!-- ── Twitter Card ─────────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Norstack" />
+    <meta name="twitter:title" content="Norstack Digital | Premium Web & Software Agency" />
+    <meta name="twitter:description" content="We build premium websites, custom software, mobile apps & AI automation for ambitious businesses." />
+    <meta name="twitter:image" content="https://norstackdigital.com/og-image.png" />
+
+    <!-- ── Performance: Resource Hints ──────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
+    <link rel="dns-prefetch" href="https://wa.me" />
+    <!-- Preload critical font subset for LCP improvement -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4Ko70yyygA.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- ── Theme ─────────────────────────────────────────────────── -->
+    <meta name="theme-color" content="#030712" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- ── Anti-FOUC: apply saved theme class before first paint ── -->
     <script>
       (function () {
         try {
@@ -16,8 +65,61 @@
         } catch (e) {}
       })();
     </script>
+
+    <!-- ── Structured Data (JSON-LD) ────────────────────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Norstack Digital",
+      "alternateName": "Norstack Digital Agency",
+      "url": "https://norstackdigital.com",
+      "logo": "https://norstackdigital.com/favicon.svg",
+      "description": "Premium digital agency offering web development, software development, mobile apps, UI/UX design, digital marketing and AI automation.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Abuja",
+        "addressCountry": "NG"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+234-706-738-2927",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "hello@norstackdigital.com",
+          "contactType": "customer service"
+        }
+      ],
+      "sameAs": [
+        "https://web.facebook.com/norstack/",
+        "https://www.instagram.com/norstack_/",
+        "https://x.com/Norstack"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Development" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Software Development" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing & SEO" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Automation & AI" } }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
+    <noscript>
+      <div style="padding:20px;text-align:center;font-family:sans-serif;">
+        Norstack Digital requires JavaScript to run. Please enable JavaScript in your browser.
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
   </body>

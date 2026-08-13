@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Nav } from './components/Nav';
 import { Footer } from './components/Footer';
@@ -18,6 +18,43 @@ export function App() {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // ── Dynamic per-page SEO: update <title> and <meta name="description"> ──
+  useEffect(() => {
+    const pageMeta: Record<string, { title: string; description: string }> = {
+      home: {
+        title: 'Norstack Digital | Premium Web & Software Development Agency — Abuja, Nigeria',
+        description: 'Norstack Digital is a top-rated digital agency in Nigeria. We build premium websites, custom software, mobile apps, SEO systems & AI automation for ambitious brands. Get a free audit today.',
+      },
+      services: {
+        title: 'Our Services | Web Development, Software, Apps & Marketing — Norstack Digital',
+        description: 'Explore Norstack Digital’s full-service offering: website development, custom software, mobile apps, UI/UX design, digital marketing, AI automation and more.',
+      },
+      pricing: {
+        title: 'Pricing & Packages | Transparent Plans — Norstack Digital',
+        description: 'View Norstack Digital’s transparent pricing packages for website development, software, apps, and digital marketing. Find the right plan for your business.',
+      },
+      portfolio: {
+        title: 'Portfolio | Featured Projects & Case Studies — Norstack Digital',
+        description: 'Explore our featured projects including CMANVerify, RFT Academy, and MBRTS. See how Norstack Digital delivers real results for ambitious brands.',
+      },
+      about: {
+        title: 'About Us | Meet the Team Behind Norstack Digital',
+        description: 'Learn about Norstack Digital — founded in Abuja in 2020, we engineer digital leverage for businesses through strategy-first web, software and marketing solutions.',
+      },
+      contact: {
+        title: 'Contact Us | Start Your Project — Norstack Digital',
+        description: 'Ready to build something great? Contact Norstack Digital to start your web, software or marketing project. We’ll review your inquiry and respond promptly.',
+      },
+    };
+
+    const meta = pageMeta[currentPage] || pageMeta.home;
+    document.title = meta.title;
+
+    // Update meta description
+    let descEl = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (descEl) descEl.setAttribute('content', meta.description);
+  }, [currentPage]);
 
   const renderPage = () => {
     switch (currentPage) {

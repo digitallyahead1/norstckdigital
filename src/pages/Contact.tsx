@@ -307,10 +307,11 @@ ${formData.message}`;
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="relative">
-                    <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-text3 mb-2">
+                    <label htmlFor="service" className="block text-[10px] font-bold uppercase tracking-widest text-brand-text3 mb-2">
                       Service Required
                     </label>
                     <select
+                      id="service"
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
@@ -326,10 +327,11 @@ ${formData.message}`;
                   </div>
 
                   <div className="relative">
-                    <label className="block text-[10px] font-bold uppercase tracking-widest text-brand-text3 mb-2">
+                    <label htmlFor="budget" className="block text-[10px] font-bold uppercase tracking-widest text-brand-text3 mb-2">
                       Estimated Budget
                     </label>
                     <select
+                      id="budget"
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}

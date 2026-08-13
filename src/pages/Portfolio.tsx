@@ -102,6 +102,8 @@ export function Portfolio({ onNavigate }: PortfolioProps) {
                       <img
                         src={project.logo}
                         alt={project.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-contain"
                         style={{ maxHeight: 90 }}
                       />

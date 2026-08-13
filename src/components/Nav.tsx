@@ -36,6 +36,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 h-[68px] transition-all duration-500 ease-lux ${
         isScrolled
           ? 'bg-brand-bg/80 backdrop-blur-xl border-b border-brand-border1'
@@ -46,6 +47,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
         {/* Logo */}
         <button
           onClick={() => handleNavClick('home')}
+          aria-label="Norstack Digital – go to home page"
           className="flex items-center gap-3 text-left group"
         >
           <div className="relative w-10 h-10 rounded-[14px] bg-gradient-to-b from-[#08132b] to-[#040916] border border-[#00d2ff]/30 flex items-center justify-center shadow-[0_0_20px_rgba(0,210,255,0.15)] group-hover:border-[#00d2ff]/60 transition-all duration-300">
@@ -81,6 +83,8 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
+                aria-label={`Navigate to ${link.label}`}
+                aria-current={currentPage === link.id ? 'page' : undefined}
                 className="relative text-[10px] uppercase tracking-[0.2em] font-bold text-brand-text2 hover:text-brand-text1 transition-colors py-2"
               >
                 {link.label}
@@ -176,6 +180,9 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
           <button
             className="text-brand-text1 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-nav-menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -187,12 +194,17 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
+          id="mobile-nav-menu"
+          role="dialog"
+          aria-label="Mobile navigation menu"
           className="md:hidden absolute top-[68px] left-0 right-0 bg-brand-bg/95 backdrop-blur-xl border-b border-brand-border1 shadow-2xl flex flex-col py-8 px-6 space-y-6"
         >
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => handleNavClick(link.id)}
+              aria-label={`Navigate to ${link.label}`}
+              aria-current={currentPage === link.id ? 'page' : undefined}
               className={`text-left text-sm uppercase tracking-[0.2em] font-bold py-2 ${
                 currentPage === link.id ? 'text-brand-gold' : 'text-brand-text2'
               }`}
