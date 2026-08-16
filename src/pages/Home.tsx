@@ -4,7 +4,6 @@ import { Marquee } from '../components/home/Marquee';
 import { AdVideo } from '../components/home/AdVideo';
 import { ServicesCategory } from '../components/home/ServicesCategory';
 import { SystemSimulator } from '../components/home/SystemSimulator';
-import { Process } from '../components/home/Process';
 import { StrategyPlanner } from '../components/home/StrategyPlanner';
 import { Testimonials } from '../components/home/Testimonials';
 import { FinalCTA } from '../components/home/FinalCTA';
@@ -31,16 +30,13 @@ export function Home({ onNavigate }: HomeProps) {
       {/* 5. Live Interactive System Simulator */}
       <SystemSimulator />
 
-      {/* 6. 5-Step Delivery Process */}
-      <Process />
-
-      {/* 7. Interactive Strategy & Growth Configurator */}
+      {/* 6. Interactive Strategy & Growth Configurator */}
       <StrategyPlanner onNavigate={onNavigate} />
 
-      {/* 8. Client Testimonials & Social Proof */}
+      {/* 7. Client Testimonials & Social Proof */}
       <Testimonials />
 
-      {/* 9. Finale Conversion CTA */}
+      {/* 8. Finale Conversion CTA */}
       <FinalCTA onNavigate={onNavigate} />
     </div>
   );
