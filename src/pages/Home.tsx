@@ -3,7 +3,6 @@ import { Hero } from '../components/home/Hero';
 import { Marquee } from '../components/home/Marquee';
 import { AdVideo } from '../components/home/AdVideo';
 import { ServicesCategory } from '../components/home/ServicesCategory';
-import { SystemSimulator } from '../components/home/SystemSimulator';
 import { StrategyPlanner } from '../components/home/StrategyPlanner';
 import { Testimonials } from '../components/home/Testimonials';
 import { FinalCTA } from '../components/home/FinalCTA';
@@ -27,16 +26,13 @@ export function Home({ onNavigate }: HomeProps) {
       {/* 4. Services Category Explorer */}
       <ServicesCategory onNavigate={onNavigate} />
 
-      {/* 5. Live Interactive System Simulator */}
-      <SystemSimulator />
-
-      {/* 6. Interactive Strategy & Growth Configurator */}
+      {/* 5. Interactive Strategy & Growth Configurator */}
       <StrategyPlanner onNavigate={onNavigate} />
 
-      {/* 7. Client Testimonials & Social Proof */}
+      {/* 6. Client Testimonials & Social Proof */}
       <Testimonials />
 
-      {/* 8. Finale Conversion CTA */}
+      {/* 7. Finale Conversion CTA */}
       <FinalCTA onNavigate={onNavigate} />
     </div>
   );
