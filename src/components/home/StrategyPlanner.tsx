@@ -1,274 +1,277 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Calendar, TrendingUp, CheckSquare, Layers, Lock } from 'lucide-react';
-import { CountUp } from '../ui/CountUp';
+import {
+  TrendingUp,
+  Clock,
+  Cpu,
+  ShieldCheck,
+  ArrowUpRight,
+  ArrowRight,
+  Zap,
+  Layers,
+  Smartphone,
+  Sparkles,
+} from 'lucide-react';
 
 interface StrategyPlannerProps {
   onNavigate: (page: string) => void;
 }
 
+interface StrategyObjective {
+  id: string;
+  icon: React.ElementType;
+  label: string;
+  headline: string;
+  description: string;
+  timeline: string;
+  roi: string;
+  architecture: string;
+  milestone: string;
+}
+
+const strategies: StrategyObjective[] = [
+  {
+    id: 'conversions',
+    icon: TrendingUp,
+    label: 'Lead & Sales Growth',
+    headline: 'High-Converting Digital Funnels & Growth Engines',
+    description:
+      'We architect precision-engineered websites and landing systems designed to eliminate user friction, maximize conversions, and capture high-intent leads.',
+    timeline: '3 - 5 Weeks',
+    roi: '4x Average Pipeline Growth',
+    architecture: 'Next.js, React, Tailwind CSS, Technical SEO',
+    milestone: 'Friction Audit, Conversion Wireframing & Sub-second API Integration',
+  },
+  {
+    id: 'automation',
+    icon: Zap,
+    label: 'Business Automation',
+    headline: 'End-to-End Workflow & Operational Orchestration',
+    description:
+      'We eliminate hundreds of hours of manual labor by integrating your customer portals directly with automated CRM pipelines, billing systems, and messaging relays.',
+    timeline: '2 - 4 Weeks',
+    roi: '5x Hours Saved Monthly',
+    architecture: 'Node.js, PostgreSQL, Webhooks, WhatsApp & Twilio APIs',
+    milestone: 'API Handshake, Database Architecture & Automated Notifications',
+  },
+  {
+    id: 'software',
+    icon: Smartphone,
+    label: 'Custom SaaS & Apps',
+    headline: 'Scalable Mobile Apps & Enterprise SaaS Platforms',
+    description:
+      'We design and deploy robust mobile applications and cloud-native software platforms equipped with real-time sync, role-based controls, and bulletproof security.',
+    timeline: '6 - 9 Weeks',
+    roi: '3x Customer Engagement',
+    architecture: 'React Native, TypeScript, Spring Boot, Paystack & Stripe',
+    milestone: 'Secure Wallet Ledger, Mobile UI Design & Cloud Infrastructure',
+  },
+  {
+    id: 'branding',
+    icon: Sparkles,
+    label: 'Brand & UX Overhaul',
+    headline: 'Authority-Building Visual Identities & UX Systems',
+    description:
+      'We elevate your brand perception with world-class visual design, comprehensive design systems, and editorial typography that command premium market positioning.',
+    timeline: '2 - 3 Weeks',
+    roi: '2.5x Perceived Brand Value',
+    architecture: 'Figma UI, Design Tokens, Micro-Interactions & Guidelines',
+    milestone: 'Competitor Benchmarking, Visual Hierarchy & Component Library',
+  },
+];
+
 export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
-  const challenges = [
-    {
-      id: 'leads',
-      btnLabel: 'Scale Web Conversions & Leads',
-      title: 'Performance Lead-Vending Platform Strategy',
-      timeline: '3 - 5 Weeks',
-      roi: 4,
-      roiSuffix: 'x Average',
-      techs: ['Vite', 'React', 'Tailwind CSS', 'Framer Motion', 'SEO Opt'],
-      steps: [
-        'Perform complete audit of friction nodes on checkout/sign-up flows',
-        'Implement visual structural elements, glassmorphism badges, and smooth scroll animations',
-        'Deploy custom React frontend backed by super-fast response hooks to capture leads <20ms',
-        'Directly funnel prospects to qualified email newsletters & high-end CRM boards'
-      ],
-      terminalLog: 'Routing lead pipeline. Optimizing layout flow. Compiling static components. Final performance score: 100/100.'
-    },
-    {
-      id: 'automation',
-      btnLabel: 'Automate Manual Business Workflows',
-      title: 'Workflow Orchestration & Node-Mapping Strategy',
-      timeline: '2 - 4 Weeks',
-      roi: 5,
-      roiSuffix: 'x Hours Saved',
-      techs: ['NodeJS', 'Express', 'Zapier APIs', 'PostgreSQL', 'Webhooks'],
-      steps: [
-        'Map out core customer onboarding, invoice notifications, and data updates',
-        'Build custom middleware routing transactions directly through secure endpoint relays',
-        'Configure event-triggered SMS/WhatsApp channels via Twilio/SMEPlug handlers',
-        'Setup live system dashboard for transparent metric auditing'
-      ],
-      terminalLog: 'Checking API keys. Initializing webhooks. Connecting PostgreSQL data tables. Active integrations: 100% OK.'
-    },
-    {
-      id: 'saas',
-      btnLabel: 'Build Custom Mobile SaaS / Wallet App',
-      title: 'High-Fidelity Transaction & Wallet App Strategy',
-      timeline: '6 - 9 Weeks',
-      roi: 3,
-      roiSuffix: 'x Engagement',
-      techs: ['React Native', 'TypeScript', 'NodeJS', 'Spring Boot', 'Stripe/Paystack'],
-      steps: [
-        'Architect responsive mobile dashboard showing balances and transaction ledgers',
-        'Code custom API integrations with vending endpoints (SME data, voice vending)',
-        'Engineer strict administrative access controls and secure multi-factor authentication',
-        'Deploy Android & iOS pipelines for rapid, continuous app-store distribution'
-      ],
-      terminalLog: 'Validating security modules. Initializing Android/iOS containers. Compiling wallet ledgers. Secure connection: ACTIVE.'
-    },
-    {
-      id: 'brand',
-      btnLabel: 'Complete Brand Identity & UI Overhaul',
-      title: 'Premium UX Design & Editorial Brand Strategy',
-      timeline: '2 - 3 Weeks',
-      roi: 2,
-      roiSuffix: 'x Brand Value',
-      techs: ['Figma UI', 'Syne Font', 'Vanilla CSS', 'Color Theory', 'Micro-interactions'],
-      steps: [
-        'Deconstruct competitor layouts and benchmark against elite, world-class premium websites',
-        'Develop sophisticated color system featuring dark/light balance, gradients, and custom overlays',
-        'Design elegant typography hierarchy combining heavy headings with italic editorial highlights',
-        'Add ambient scroll trigger effects and premium custom loaders'
-      ],
-      terminalLog: 'Generating color palette tokens. Loading Google Fonts (Syne/DM Sans). Creating CSS variables. Aesthetics: REDESIGNED.'
-    }
-  ];
-
-  const [selectedChallenge, setSelectedChallenge] = useState(challenges[0]);
-  const [typingLog, setTypingLog] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-
-  // Simulate logging effects on select
-  useEffect(() => {
-    setIsTyping(true);
-    setTypingLog('');
-    let index = 0;
-    const log = selectedChallenge.terminalLog;
-    
-    const interval = setInterval(() => {
-      if (index < log.length) {
-        setTypingLog(prev => prev + log.charAt(index));
-        index++;
-      } else {
-        clearInterval(interval);
-        setIsTyping(false);
-      }
-    }, 15);
-
-    return () => clearInterval(interval);
-  }, [selectedChallenge]);
+  const [activeId, setActiveId] = useState<string>('conversions');
+  const active = strategies.find((s) => s.id === activeId) || strategies[0];
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-brand-bg relative overflow-hidden">
-      <div className="absolute top-[30%] left-[10%] w-[45vw] h-[45vw] bg-brand-gold/5 rounded-full blur-[130px] pointer-events-none" />
+    <section className="py-24 md:py-32 bg-[#050608] relative overflow-hidden select-none border-t border-white/5">
+      {/* Background ambient lighting */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-1/3 right-0 w-[45vw] h-[45vw] max-w-[650px] max-h-[650px] opacity-20 rounded-full blur-[140px]"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 229, 176, 0.2) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 80%)',
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-[-5%] w-[35vw] h-[35vw] max-w-[500px] max-h-[500px] opacity-15 rounded-full blur-[150px]"
+          style={{
+            background: 'radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, transparent 70%)',
+          }}
+        />
+      </div>
 
-      <div className="max-w-[1400px] mx-auto relative z-10">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Header Block */}
-        <div className="max-w-3xl mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="h-px w-8 bg-brand-gold/60"></span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-gold">
-              Growth Configurator
+        {/* Section Header */}
+        <div className="mb-14 md:mb-20">
+          <div className="flex items-center gap-2.5 mb-4">
+            <span className="w-[3px] h-5 rounded-full bg-gradient-to-b from-[#00e5b0] to-[#00d2ff]" />
+            <span className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#00e5b0]">
+              Strategic Growth Configurator
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-brand-text1 leading-[1.1] tracking-tight">
-            Configure Your Custom <br />
-            <span className="font-editorial text-brand-gold font-normal italic">Leverage Strategy</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black text-white leading-tight tracking-tight">
+            Tailored Strategies Built for{' '}
+            <span className="bg-gradient-to-r from-[#00e5b0] via-[#00d2ff] to-[#a855f7] bg-clip-text text-transparent">
+              Maximum ROI
+            </span>
           </h2>
-          <p className="text-sm text-brand-text2 mt-4 max-w-xl font-light">
-            Select your agency target objective. Our interactive configurator will instantly compute recommended stacks, timelines, and action metrics tailored to your digital growth.
-          </p>
         </div>
 
-        {/* Configuration Board Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left panel: Buttons list */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="text-[10px] uppercase font-bold tracking-widest text-brand-text3 mb-2 px-1">
-              Select Current Business Challenge
-            </div>
-            
-            {challenges.map((c) => {
-              const isSelected = selectedChallenge.id === c.id;
+          {/* ── LEFT COLUMN: Big Clean Strategy Tabs ─────────────────── */}
+          <div className="lg:col-span-4 flex flex-row lg:flex-col gap-6 lg:gap-14 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-none">
+            {strategies.map((strat) => {
+              const Icon = strat.icon;
+              const isActive = strat.id === activeId;
               return (
                 <button
-                  key={c.id}
-                  onClick={() => setSelectedChallenge(c)}
-                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-500 ease-lux flex items-center justify-between group ${
-                    isSelected
-                      ? 'bg-brand-surface1 border-brand-gold/60 shadow-[0_0_20px_rgba(0,210,255,0.2)]'
-                      : 'bg-brand-surface2/40 border-brand-border1 hover:border-brand-border2 hover:bg-brand-surface2/60'
-                  }`}
+                  key={strat.id}
+                  onClick={() => setActiveId(strat.id)}
+                  className="group flex items-center gap-4 md:gap-5 text-left transition-all duration-300 outline-none focus:outline-none whitespace-nowrap lg:whitespace-normal cursor-pointer"
                 >
-                  <div className="space-y-1">
-                    <div className={`text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${
-                      isSelected ? 'text-brand-gold' : 'text-brand-text2 group-hover:text-brand-text1'
-                    }`}>
-                      {c.btnLabel}
-                    </div>
-                  </div>
-                  <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-colors duration-300 ${
-                    isSelected ? 'bg-brand-gold border-brand-gold text-brand-bg' : 'border-brand-border2 text-brand-text3 group-hover:text-brand-text2'
-                  }`}>
-                    &rarr;
-                  </div>
+                  <Icon
+                    strokeWidth={2.2}
+                    className={`w-7 h-7 md:w-9 md:h-9 transition-all duration-300 shrink-0 ${
+                      isActive
+                        ? 'text-[#00e5b0] scale-110 drop-shadow-[0_0_12px_rgba(0,229,176,0.5)]'
+                        : 'text-[#1e3a35] group-hover:text-[#00e5b0]/60'
+                    }`}
+                  />
+                  <span
+                    className={`text-2xl md:text-3xl lg:text-[38px] font-bold tracking-tight transition-all duration-300 ${
+                      isActive
+                        ? 'text-white'
+                        : 'text-[#444a56] group-hover:text-slate-300'
+                    }`}
+                  >
+                    {strat.label}
+                  </span>
                 </button>
               );
             })}
-
-            {/* Terminal Console Simulation Box */}
-            <div className="bg-brand-surface1 border border-brand-border1 rounded-2xl p-5 font-mono text-[11px] h-32 flex flex-col justify-between shadow-inner">
-              <div className="text-[8px] font-extrabold text-brand-text3 uppercase tracking-wider border-b border-brand-border1 pb-2">
-                Strategy Pipeline Log
-              </div>
-              <div className="text-brand-text2 flex-grow pt-2 flex items-start gap-1">
-                <span className="text-brand-gold font-bold">&gt;</span>
-                <span>{typingLog}</span>
-                {isTyping && <span className="w-1.5 h-3 bg-brand-gold animate-pulse inline-block" />}
-              </div>
-              <div className="text-[8px] text-brand-text3/50 text-right uppercase tracking-widest">
-                Norstack Configurator v1.4
-              </div>
-            </div>
           </div>
 
-          {/* Right panel: Live Computed Strategy Sheet */}
-          <div className="lg:col-span-7 bg-brand-surface2 border border-brand-border1 rounded-[2.5rem] p-8 md:p-10 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-brand-gold/5 blur-[50px] rounded-full group-hover:bg-brand-gold/10 transition-colors duration-500" />
-            
+          {/* ── RIGHT COLUMN: Description & Solid Corporate Card Grid ───────── */}
+          <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
-                key={selectedChallenge.id}
-                initial={{ opacity: 0, y: 15 }}
+                key={activeId}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
+                exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 space-y-8"
               >
-                {/* Output Title */}
-                <div>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-gold/10 border border-brand-gold/25 text-brand-gold text-[9px] font-bold rounded-full uppercase tracking-wider mb-3">
-                    <Sparkles size={10} /> Live computed roadmap
-                  </span>
-                  <h3 className="text-2xl md:text-3xl font-heading font-extrabold text-brand-text1 tracking-tight">
-                    {selectedChallenge.title}
-                  </h3>
+                {/* Description */}
+                <p className="text-white/90 text-base md:text-lg font-normal leading-relaxed max-w-2xl mb-4">
+                  {active.description}
+                </p>
+
+                {/* "Lock in strategy consult ↗" link */}
+                <div className="mb-8">
+                  <button
+                    onClick={() => onNavigate('contact')}
+                    className="inline-flex items-center gap-2 text-[15px] font-bold text-white hover:text-[#00e5b0] transition-colors duration-200 group cursor-pointer"
+                  >
+                    <span>Request Strategy Consultation</span>
+                    <ArrowUpRight
+                      size={18}
+                      className="text-[#00e5b0] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
+                    />
+                  </button>
                 </div>
 
-                {/* Stats Row */}
-                <div className="grid grid-cols-2 gap-6 py-6 border-y border-brand-border1/60">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-surface3 border border-brand-border1 flex items-center justify-center text-brand-gold">
-                      <Calendar size={18} />
-                    </div>
-                    <div>
-                    <div className="text-[8px] uppercase tracking-widest text-brand-text3 font-extrabold">Delivery Timeline</div>
-                    <div className="text-lg font-bold text-brand-text1 mt-1">{selectedChallenge.timeline}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-brand-surface3 border border-brand-border1 flex items-center justify-center text-brand-gold">
-                    <TrendingUp size={18} />
-                  </div>
-                  <div>
-                    <div className="text-[8px] uppercase tracking-widest text-brand-text3 font-extrabold">Estimated Return</div>
-                    <div className="text-lg font-bold text-brand-gold mt-1">
-                      <CountUp to={selectedChallenge.roi} suffix={selectedChallenge.roiSuffix} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Tech Stack Badges */}
-              <div className="space-y-3">
-                <div className="text-[9px] uppercase font-bold tracking-widest text-brand-text3 flex items-center gap-1.5">
-                  <Layers size={11} /> Suggested System Architecture
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {selectedChallenge.techs.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1.5 bg-brand-surface3 hover:bg-brand-surface1 border border-brand-border1 text-brand-text2 hover:text-brand-gold text-[10px] font-bold uppercase rounded-lg transition-colors duration-300 select-none"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Step Roadmap */}
-              <div className="space-y-4">
-                <div className="text-[9px] uppercase font-bold tracking-widest text-brand-text3 flex items-center gap-1.5">
-                  <CheckSquare size={11} /> Phase Milestones & Core Action Items
-                </div>
-                <div className="space-y-3">
-                  {selectedChallenge.steps.map((step, i) => (
-                    <div key={i} className="flex items-start gap-3 text-xs text-brand-text2 leading-relaxed">
-                      <span className="flex-shrink-0 w-5 h-5 rounded-md bg-brand-surface3 border border-brand-border1 text-[9px] font-extrabold text-brand-gold flex items-center justify-center">
-                        0{i + 1}
+                {/* Solid Corporate Card Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                  
+                  {/* Card 1: Timeline */}
+                  <div className="group bg-[#18191c] hover:bg-[#202126] border border-white/[0.04] hover:border-[#00e5b0]/25 rounded-[20px] p-6 transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)] flex flex-col justify-between min-h-[140px]">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Clock size={22} className="text-[#00e5b0] shrink-0" />
+                      <span className="text-[12px] font-bold uppercase tracking-wider text-slate-400">
+                        Delivery Timeline
                       </span>
-                      <span>{step}</span>
                     </div>
-                  ))}
-                </div>
-              </div>
+                    <div className="text-xl md:text-2xl font-bold text-white tracking-tight">
+                      {active.timeline}
+                    </div>
+                    <p className="text-xs text-slate-400 mt-2">
+                      Rapid sprint milestones with weekly staging demos.
+                    </p>
+                  </div>
 
-              {/* Conversion CTA */}
-              <button
-                onClick={() => onNavigate('contact')}
-                className="w-full mt-6 inline-flex items-center justify-center gap-4 rounded-xl py-4 bg-brand-text1 hover:bg-brand-gold text-white text-xs font-extrabold uppercase tracking-widest transition-all duration-300 shadow-xl shadow-brand-text1/5 hover:shadow-brand-gold/10 group"
-              >
-                <Lock size={12} className="group-hover:rotate-12 transition-transform" /> Lock In Strategy Consult
-              </button>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+                  {/* Card 2: Expected ROI */}
+                  <div className="group bg-[#18191c] hover:bg-[#202126] border border-white/[0.04] hover:border-[#00e5b0]/25 rounded-[20px] p-6 transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)] flex flex-col justify-between min-h-[140px]">
+                    <div className="flex items-center gap-3 mb-2">
+                      <TrendingUp size={22} className="text-[#00e5b0] shrink-0" />
+                      <span className="text-[12px] font-bold uppercase tracking-wider text-slate-400">
+                        Estimated Impact
+                      </span>
+                    </div>
+                    <div className="text-xl md:text-2xl font-bold text-[#00e5b0] tracking-tight">
+                      {active.roi}
+                    </div>
+                    <p className="text-xs text-slate-400 mt-2">
+                      Engineered for high retention & revenue expansion.
+                    </p>
+                  </div>
+
+                  {/* Card 3: Suggested Architecture */}
+                  <div className="group bg-[#18191c] hover:bg-[#202126] border border-white/[0.04] hover:border-[#00e5b0]/25 rounded-[20px] p-6 transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)] flex flex-col justify-between min-h-[140px]">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Cpu size={22} className="text-[#00e5b0] shrink-0" />
+                      <span className="text-[12px] font-bold uppercase tracking-wider text-slate-400">
+                        Core Architecture
+                      </span>
+                    </div>
+                    <div className="text-sm md:text-[15px] font-bold text-white leading-snug">
+                      {active.architecture}
+                    </div>
+                    <p className="text-xs text-slate-400 mt-2">
+                      High performance, modern stack, sub-second execution.
+                    </p>
+                  </div>
+
+                  {/* Card 4: Action Roadmap */}
+                  <div className="group bg-[#18191c] hover:bg-[#202126] border border-white/[0.04] hover:border-[#00e5b0]/25 rounded-[20px] p-6 transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)] flex flex-col justify-between min-h-[140px]">
+                    <div className="flex items-center gap-3 mb-2">
+                      <ShieldCheck size={22} className="text-[#00e5b0] shrink-0" />
+                      <span className="text-[12px] font-bold uppercase tracking-wider text-slate-400">
+                        Key Milestones
+                      </span>
+                    </div>
+                    <div className="text-sm md:text-[15px] font-bold text-white leading-snug">
+                      {active.milestone}
+                    </div>
+                    <p className="text-xs text-slate-400 mt-2">
+                      Full transparency, thorough QA, and SLA support.
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* Bottom Action CTA button */}
+                <div className="mt-8">
+                  <button
+                    onClick={() => onNavigate('contact')}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#00e5b0] hover:bg-[#00c99a] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl px-8 py-4 transition-all duration-200 shadow-[0_0_25px_rgba(0,229,176,0.3)] hover:scale-[1.02] cursor-pointer"
+                  >
+                    <span>Discuss Your Project Strategy</span>
+                    <ArrowRight size={15} />
+                  </button>
+                </div>
+
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
         </div>
       </div>
     </section>
   );
 }
+
