@@ -2,7 +2,7 @@ import React from 'react';
 import { Hero } from '../components/home/Hero';
 import { Marquee } from '../components/home/Marquee';
 import { BentoServices } from '../components/home/BentoServices';
-import { WhyUs } from '../components/home/WhyUs';
+import { ServicesCategory } from '../components/home/ServicesCategory';
 import { SystemSimulator } from '../components/home/SystemSimulator';
 import { Process } from '../components/home/Process';
 import { StrategyPlanner } from '../components/home/StrategyPlanner';
@@ -26,8 +26,8 @@ export function Home({ onNavigate }: HomeProps) {
       {/* 3. Interactive Bento Services Carousel */}
       <BentoServices onNavigate={onNavigate} />
 
-      {/* 4. Why Norstack — Value Pillars & Metrics Panel */}
-      <WhyUs />
+      {/* 4. Services Category Explorer */}
+      <ServicesCategory onNavigate={onNavigate} />
 
       {/* 5. Live Interactive System Simulator */}
       <SystemSimulator />
