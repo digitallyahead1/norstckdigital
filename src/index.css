@@ -1,5 +1,5 @@
 /* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
 
 /* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
 @import 'tailwindcss/base';
@@ -8,45 +8,45 @@
 
 /* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
-/* ─── DARK THEME (default) ─────────────────────────────── */
+/* ─── DARK THEME (default: sophisticated slate-navy, not harsh pitch black) ─── */
 :root,
 html.dark,
 .dark-theme {
-  --bg-0: #030712;
-  --bg-1: #0c1e3b;
-  --bg-2: #0e2447;
-  --bg-3: #122c56;
-  --warm-dark: #050811;
+  --bg-0: #090e1a;
+  --bg-1: #0f172a;
+  --bg-2: #162036;
+  --bg-3: #1e2c48;
+  --warm-dark: #0d1424;
   --gold: #00d2ff;
   --gold-hi: #38bdf8;
   --gold-dim: #0284c7;
   --purple: #a855f7;
   --blue: #3b82f6;
-  --text-1: #e2e8f0;
-  --text-2: #90a1b9;
-  --text-3: #45556c;
-  --border-1: #163060;
-  --border-2: #1e3d75;
+  --text-1: #f8fafc;
+  --text-2: #94a3b8;
+  --text-3: #64748b;
+  --border-1: #1e293b;
+  --border-2: #334155;
   color-scheme: dark;
 }
 
-/* ─── LIGHT THEME ──────────────────────────────────────── */
+/* ─── LIGHT THEME (clean, minimal, #424242 text, crisp white surfaces) ─── */
 html.light {
-  --bg-0: #f0f4ff;
-  --bg-1: #dde8f7;
-  --bg-2: #cdd9f0;
-  --bg-3: #bccae8;
-  --warm-dark: #e8eef8;
-  --gold: #0070c0;
-  --gold-hi: #0099e0;
-  --gold-dim: #005aa0;
+  --bg-0: #f8fafc;
+  --bg-1: #ffffff;
+  --bg-2: #f1f5f9;
+  --bg-3: #e2e8f0;
+  --warm-dark: #f8fafc;
+  --gold: #0284c7;
+  --gold-hi: #00d2ff;
+  --gold-dim: #0369a1;
   --purple: #7c3aed;
   --blue: #2563eb;
   --text-1: #0f172a;
-  --text-2: #334155;
-  --text-3: #64748b;
-  --border-1: #bfcfe8;
-  --border-2: #93b3d8;
+  --text-2: #424242;
+  --text-3: #6b7280;
+  --border-1: #e2e8f0;
+  --border-2: #cbd5e1;
   color-scheme: light;
 }
 

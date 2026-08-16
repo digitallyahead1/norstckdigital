@@ -31,9 +31,9 @@ export default {
         }
       },
       fontFamily: {
-        sans:    ['Plus Jakarta Sans', 'Geist', 'sans-serif'],
-        heading: ['Plus Jakarta Sans', 'Geist', 'sans-serif'],
-        serif:   ['Instrument Serif', 'serif'],
+        sans:    ['Roboto', 'Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+        heading: ['Plus Jakarta Sans', 'Roboto', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+        serif:   ['Instrument Serif', 'Georgia', 'serif'],
       },
       transitionTimingFunction: {
         'lux': 'cubic-bezier(0.22, 1, 0.36, 1)',
