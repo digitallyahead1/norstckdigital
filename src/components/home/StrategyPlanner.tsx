@@ -260,7 +260,7 @@ export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
               {/* Conversion CTA */}
               <button
                 onClick={() => onNavigate('contact')}
-                className="w-full mt-6 inline-flex items-center justify-center gap-4 rounded-xl py-4 bg-brand-text1 hover:bg-brand-gold text-brand-bg text-xs font-extrabold uppercase tracking-widest transition-all duration-300 shadow-xl shadow-brand-text1/5 hover:shadow-brand-gold/10 group"
+                className="w-full mt-6 inline-flex items-center justify-center gap-4 rounded-xl py-4 bg-brand-text1 hover:bg-brand-gold text-white text-xs font-extrabold uppercase tracking-widest transition-all duration-300 shadow-xl shadow-brand-text1/5 hover:shadow-brand-gold/10 group"
               >
                 <Lock size={12} className="group-hover:rotate-12 transition-transform" /> Lock In Strategy Consult
               </button>

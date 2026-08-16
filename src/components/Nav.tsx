@@ -15,7 +15,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => setIsScrolled(window.scrollY > 15);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -34,13 +34,19 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
     setIsMobileMenuOpen(false);
   };
 
+  // When on the home page and not scrolled, the navbar sits directly over the dark hero background.
+  // In that state, we must use bright white text so it's 100% legible even if the user has light mode active!
+  const isOverDarkHero = currentPage === 'home' && !isScrolled;
+
   return (
     <nav
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 h-[68px] transition-all duration-500 ease-lux ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-300 ${
         isScrolled
-          ? 'bg-brand-bg/80 backdrop-blur-xl border-b border-brand-border1'
-          : 'bg-transparent'
+          ? 'bg-brand-bg/90 backdrop-blur-xl border-b border-brand-border1 shadow-lg'
+          : isOverDarkHero
+          ? 'bg-transparent'
+          : 'bg-brand-bg/60 backdrop-blur-md border-b border-brand-border1/60'
       }`}
     >
       <div className="h-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -50,7 +56,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
           aria-label="Norstack Digital – go to home page"
           className="flex items-center gap-3 text-left group"
         >
-          <div className="relative w-10 h-10 rounded-[14px] bg-gradient-to-b from-[#08132b] to-[#040916] border border-[#00d2ff]/30 flex items-center justify-center shadow-[0_0_20px_rgba(0,210,255,0.15)] group-hover:border-[#00d2ff]/60 transition-all duration-300">
+          <div className="relative w-10 h-10 rounded-[14px] bg-gradient-to-b from-[#08132b] to-[#040916] border border-[#00d2ff]/30 flex items-center justify-center shadow-[0_0_20px_rgba(0,210,255,0.2)] group-hover:border-[#00d2ff]/60 transition-all duration-300">
             <svg width="26" height="26" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="7" y="7" width="18" height="18" rx="5" transform="rotate(45 16 16)" stroke="url(#navCyanGrad)" strokeWidth="3.5" />
               <rect x="15" y="15" width="18" height="18" rx="5" transform="rotate(45 24 24)" stroke="url(#navPurpleGrad)" strokeWidth="3.5" opacity="0.95" />
@@ -67,10 +73,14 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
             </svg>
           </div>
           <div className="flex flex-col justify-center">
-            <span className="text-base font-heading font-black tracking-wider text-brand-text1 leading-none">
+            <span className={`text-base font-heading font-black tracking-wider leading-none transition-colors ${
+              isOverDarkHero ? 'text-white' : 'text-brand-text1'
+            }`}>
               Nor<span className="bg-gradient-to-r from-[#00d2ff] via-[#3b82f6] to-[#a855f7] bg-clip-text text-transparent">stack</span>
             </span>
-            <span className="text-[8px] font-bold text-brand-text2 uppercase tracking-[0.22em] mt-1">
+            <span className={`text-[8px] font-bold uppercase tracking-[0.22em] mt-1 transition-colors ${
+              isOverDarkHero ? 'text-slate-300' : 'text-brand-text2'
+            }`}>
               Digital Solutions
             </span>
           </div>
@@ -85,13 +95,21 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
                 onClick={() => handleNavClick(link.id)}
                 aria-label={`Navigate to ${link.label}`}
                 aria-current={currentPage === link.id ? 'page' : undefined}
-                className="relative text-[10px] uppercase tracking-[0.2em] font-bold text-brand-text2 hover:text-brand-text1 transition-colors py-2"
+                className={`relative text-[11px] uppercase tracking-[0.2em] font-bold transition-colors py-2 ${
+                  isOverDarkHero
+                    ? currentPage === link.id
+                      ? 'text-[#00d2ff]'
+                      : 'text-slate-200 hover:text-white'
+                    : currentPage === link.id
+                    ? 'text-brand-gold'
+                    : 'text-brand-text2 hover:text-brand-text1'
+                }`}
               >
                 {link.label}
                 {currentPage === link.id && (
                   <motion.div
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-1/2 w-1 h-1 bg-brand-gold rounded-full -translate-x-1/2"
+                    className="absolute -bottom-1 left-1/2 w-1.5 h-1.5 bg-brand-gold rounded-full -translate-x-1/2 shadow-[0_0_8px_rgba(0,210,255,0.8)]"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -99,14 +117,18 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
             ))}
           </div>
 
-          {/* Theme Toggle */}
+          {/* Theme Toggle Button */}
           <motion.button
             id="theme-toggle"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             onClick={toggleTheme}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
-            className="relative w-9 h-9 rounded-xl border border-brand-border1 bg-brand-surface1 flex items-center justify-center text-brand-text2 hover:text-brand-gold hover:border-brand-gold/50 transition-colors duration-300 overflow-hidden"
+            className={`relative w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-300 overflow-hidden ${
+              isOverDarkHero
+                ? 'border-white/20 bg-white/10 text-white hover:border-[#00d2ff] hover:text-[#00d2ff]'
+                : 'border-brand-border1 bg-brand-surface2 text-brand-text1 hover:text-brand-gold hover:border-brand-gold/50'
+            }`}
           >
             <AnimatePresence mode="wait" initial={false}>
               {theme === 'dark' ? (
@@ -115,7 +137,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
                   initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.2 }}
                   className="absolute"
                 >
                   <Sun size={16} strokeWidth={2.5} />
@@ -126,7 +148,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
                   initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.2 }}
                   className="absolute"
                 >
                   <Moon size={16} strokeWidth={2.5} />
@@ -135,7 +157,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
             </AnimatePresence>
           </motion.button>
 
-          <Button onClick={() => handleNavClick('contact')} className="!py-2 !px-4 !text-[10px]">
+          <Button onClick={() => handleNavClick('contact')} className="!py-2.5 !px-5 !text-[11px]">
             Start a Project
           </Button>
         </div>
@@ -146,9 +168,13 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
             id="theme-toggle-mobile"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             onClick={toggleTheme}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
-            className="relative w-9 h-9 rounded-xl border border-brand-border1 bg-brand-surface1 flex items-center justify-center text-brand-text2 hover:text-brand-gold hover:border-brand-gold/50 transition-colors duration-300 overflow-hidden"
+            className={`relative w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-300 overflow-hidden ${
+              isOverDarkHero
+                ? 'border-white/20 bg-white/10 text-white hover:border-[#00d2ff]'
+                : 'border-brand-border1 bg-brand-surface2 text-brand-text1 hover:text-brand-gold'
+            }`}
           >
             <AnimatePresence mode="wait" initial={false}>
               {theme === 'dark' ? (
@@ -157,7 +183,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
                   initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.25 }}
+                  transition={{ duration: 0.2 }}
                   className="absolute"
                 >
                   <Sun size={16} strokeWidth={2.5} />
@@ -168,7 +194,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
                   initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
                   animate={{ rotate: 0, opacity: 1, scale: 1 }}
                   exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.25 }}
+                  transition={{ duration: 0.2 }}
                   className="absolute"
                 >
                   <Moon size={16} strokeWidth={2.5} />
@@ -178,7 +204,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
           </motion.button>
 
           <button
-            className="text-brand-text1 p-2"
+            className={`p-2 transition-colors ${isOverDarkHero ? 'text-white' : 'text-brand-text1'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isMobileMenuOpen}
@@ -197,7 +223,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
           id="mobile-nav-menu"
           role="dialog"
           aria-label="Mobile navigation menu"
-          className="md:hidden absolute top-[68px] left-0 right-0 bg-brand-bg/95 backdrop-blur-xl border-b border-brand-border1 shadow-2xl flex flex-col py-8 px-6 space-y-6"
+          className="md:hidden absolute top-[72px] left-0 right-0 bg-brand-bg/98 backdrop-blur-2xl border-b border-brand-border1 shadow-2xl flex flex-col py-8 px-6 space-y-6"
         >
           {links.map((link) => (
             <button
@@ -206,7 +232,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
               aria-label={`Navigate to ${link.label}`}
               aria-current={currentPage === link.id ? 'page' : undefined}
               className={`text-left text-sm uppercase tracking-[0.2em] font-bold py-2 ${
-                currentPage === link.id ? 'text-brand-gold' : 'text-brand-text2'
+                currentPage === link.id ? 'text-brand-gold' : 'text-brand-text1'
               }`}
             >
               {link.label}

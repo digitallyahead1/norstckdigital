@@ -230,7 +230,7 @@ export function SystemSimulator() {
                       <button
                         onClick={handleBuyDataSim}
                         disabled={mobileIsLoading || mobileBalance < 1200}
-                        className="py-3 bg-brand-gold text-brand-bg hover:bg-brand-goldHi text-[10px] font-bold uppercase tracking-wider rounded-xl transition-all duration-300"
+                        className="py-3 bg-brand-gold text-white hover:bg-brand-goldHi text-[10px] font-bold uppercase tracking-wider rounded-xl transition-all duration-300 shadow-sm"
                       >
                         Buy Data (1.2k)
                       </button>
@@ -325,11 +325,11 @@ export function SystemSimulator() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full flex items-center justify-center gap-3 py-4 bg-brand-gold hover:bg-brand-goldHi text-brand-bg font-extrabold uppercase text-xs tracking-widest rounded-xl transition-all duration-300 shadow-lg shadow-brand-gold/15"
+                        className="w-full flex items-center justify-center gap-3 py-4 bg-brand-gold hover:bg-brand-goldHi text-white font-extrabold uppercase text-xs tracking-widest rounded-xl transition-all duration-300 shadow-lg shadow-brand-gold/15"
                       >
                         {isSubmitting ? (
                           <>
-                            <div className="w-4 h-4 border-2 border-brand-bg border-t-transparent rounded-full animate-spin" />
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                             Locking in submission...
                           </>
                         ) : (
