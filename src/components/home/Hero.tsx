@@ -60,61 +60,59 @@ const services = [
   },
 ];
 
-export function Hero({ onNavigate }: HeroProps) {
-  // Autotyping state logic
-  const phrases = [
-    { full: "Where brands gain Leverage.", normal: "Where brands gain ", highlight: "Leverage." },
-    { full: "Transforming Ideas into Digital Reality.", normal: "Transforming Ideas into ", highlight: "Digital Reality." }
-  ];
+const rotatingWords = [
+  { text: "Leverage.", color: "text-[#00d2ff]" },
+  { text: "Digital Scale.", color: "text-purple-400" },
+  { text: "Market Power.", color: "text-[#00d2ff]" },
+  { text: "High Conversions.", color: "text-purple-400" },
+];
 
-  const [currentPhraseIdx, setCurrentPhraseIdx] = useState(0);
+export function Hero({ onNavigate }: HeroProps) {
+  const [currentWordIdx, setCurrentWordIdx] = useState(0);
   const [typedLength, setTypedLength] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const stateRef = useRef({ typedLength, isDeleting, currentPhraseIdx });
-  stateRef.current = { typedLength, isDeleting, currentPhraseIdx };
+  const stateRef = useRef({ typedLength, isDeleting, currentWordIdx });
+  stateRef.current = { typedLength, isDeleting, currentWordIdx };
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
     const loop = () => {
-      const { typedLength: len, isDeleting: del, currentPhraseIdx: idx } = stateRef.current;
-      const currentPhrase = phrases[idx].full;
+      const { typedLength: len, isDeleting: del, currentWordIdx: idx } = stateRef.current;
+      const targetWord = rotatingWords[idx].text;
 
       if (!del) {
-        if (len < currentPhrase.length) {
+        if (len < targetWord.length) {
           setTypedLength(len + 1);
-          timer = setTimeout(loop, 45);
+          timer = setTimeout(loop, 60);
         } else {
           timer = setTimeout(() => {
             setIsDeleting(true);
-            timer = setTimeout(loop, 25);
-          }, 1500);
+            timer = setTimeout(loop, 30);
+          }, 1800);
         }
       } else {
         if (len > 0) {
           setTypedLength(len - 1);
-          timer = setTimeout(loop, 20);
+          timer = setTimeout(loop, 30);
         } else {
           setIsDeleting(false);
-          setCurrentPhraseIdx((idx + 1) % phrases.length);
-          timer = setTimeout(loop, 150);
+          setCurrentWordIdx((idx + 1) % rotatingWords.length);
+          timer = setTimeout(loop, 200);
         }
       }
     };
 
-    timer = setTimeout(loop, 300);
+    timer = setTimeout(loop, 400);
     return () => clearTimeout(timer);
   }, []);
 
-  const phrase = phrases[currentPhraseIdx];
-  const normalTyped = phrase.normal.substring(0, typedLength);
-  const highlightTyped = typedLength > phrase.normal.length
-    ? phrase.highlight.substring(0, typedLength - phrase.normal.length)
-    : '';
+  const activeWord = rotatingWords[currentWordIdx];
+  const typedString = activeWord.text.substring(0, typedLength);
 
   return (
-    <section className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center pt-32 md:pt-36 pb-20 md:pb-24 overflow-hidden bg-gradient-to-r from-[#030712] via-[#05112e] to-[#0b214f] select-none">
+    <section className="relative min-h-[90vh] lg:min-h-[94vh] flex items-center pt-32 md:pt-36 pb-20 md:pb-24 overflow-hidden bg-gradient-to-r from-[#030712] via-[#05112e] to-[#0b214f] select-none">
       
       {/* ─────────────────────────────────────────────── */}
       {/* VISIBLE BOUNCING & DRIFTING HERO BACKGROUND    */}
@@ -175,16 +173,16 @@ export function Hero({ onNavigate }: HeroProps) {
               </span>
             </motion.div>
 
-            {/* Headline with Continuous Auto-Typing Effect */}
-            <div className="min-h-[95px] sm:min-h-[85px] flex items-end">
-              <h1 className="text-[clamp(2.1rem,4.2vw,3.4rem)] leading-[1.12] tracking-[-0.025em] font-extrabold text-white">
-                {normalTyped}
-                {highlightTyped && (
-                  <span className={currentPhraseIdx === 0 ? "text-[#00d2ff]" : "text-purple-400"}>
-                    {highlightTyped}
+            {/* Headline with LOCKED ZERO-JITTER Height */}
+            <div className="w-full flex flex-col justify-start">
+              <h1 className="text-[clamp(2.2rem,4.4vw,3.6rem)] leading-[1.14] tracking-[-0.03em] font-extrabold text-white">
+                <span className="block">Where brands gain</span>
+                <span className="block h-[1.25em] relative">
+                  <span className={activeWord.color}>
+                    {typedString}
                   </span>
-                )}
-                <span className="animate-pulse border-r-4 border-[#00d2ff] ml-1">&nbsp;</span>
+                  <span className="inline-block w-[3px] h-[0.85em] bg-[#00d2ff] ml-1.5 animate-pulse align-middle" />
+                </span>
               </h1>
             </div>
 
@@ -193,7 +191,7 @@ export function Hero({ onNavigate }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-[14.5px] md:text-[15.5px] text-slate-200 font-light max-w-lg leading-relaxed"
+              className="text-[15px] md:text-[16px] text-slate-200 font-normal max-w-lg leading-relaxed"
             >
               Norstack Digital engineers high-performance websites, custom web applications, mobile apps, and automated growth systems — built for measurable business leverage.
             </motion.p>
@@ -214,7 +212,7 @@ export function Hero({ onNavigate }: HeroProps) {
                 <span>Start a Project</span>
                 <ArrowRight
                   size={15}
-                  className="group-hover:translate-x-1.5 transition-transform duration-300"
+                  className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </motion.button>
 
