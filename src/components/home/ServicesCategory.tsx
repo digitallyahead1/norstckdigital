@@ -1,36 +1,35 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  // Marketing icons
+  // Category left icons
   Megaphone,
-  Share2,
+  LayoutGrid,
+  Sparkles,
+  ArrowUpRight,
+  // Marketing icons
+  ThumbsUp,
   Search,
   Bot,
   MousePointerClick,
-  Users,
-  Tv2,
-  FileText,
+  Building2,
+  Heart,
+  Film,
   Mail,
-  Star,
+  ShieldCheck,
   // Technology icons
-  MonitorSmartphone,
+  Monitor,
   Smartphone,
   ShoppingCart,
-  // Design icons
-  Palette,
-  PenTool,
-  LayoutTemplate,
-  Video,
-  // Software icons
   Code2,
   Database,
   Cloud,
   Cog,
-  // Category icons
-  BarChart2,
-  Cpu,
-  Brush,
-  ArrowUpRight,
+  // Design icons
+  Palette,
+  PenTool,
+  Layout,
+  Video,
+  Layers,
 } from 'lucide-react';
 
 interface ServicesCategoryProps {
@@ -53,50 +52,51 @@ interface Category {
 const categories: Category[] = [
   {
     id: 'marketing',
-    icon: BarChart2,
+    icon: Megaphone,
     label: 'Marketing',
     description:
       'We create tailored strategies that drive engagement, increase visibility, and boost conversions which includes:',
     subServices: [
       { icon: Megaphone, label: 'Digital Marketing' },
-      { icon: Share2, label: 'Social Media Marketing' },
+      { icon: ThumbsUp, label: 'Social Media Marketing' },
       { icon: Search, label: 'Search Engine Optimisation' },
       { icon: Bot, label: 'AI Marketing' },
       { icon: MousePointerClick, label: 'Pay Per Click (PPC) Marketing' },
-      { icon: Users, label: 'Public Relations' },
-      { icon: Tv2, label: 'Influencer Marketing' },
-      { icon: FileText, label: 'Content Marketing' },
+      { icon: Building2, label: 'Public Relations' },
+      { icon: Heart, label: 'Influencer Marketing' },
+      { icon: Film, label: 'Content Marketing' },
       { icon: Mail, label: 'Email & SMS Marketing' },
-      { icon: Star, label: 'Online Reputation' },
+      { icon: ShieldCheck, label: 'Online Reputation' },
     ],
   },
   {
     id: 'technology',
-    icon: Cpu,
+    icon: LayoutGrid,
     label: 'Technology',
     description:
-      'We design and develop websites, mobile apps, and e-commerce platforms that load fast, work across every device, and are built to convert visitors into leads and customers.',
+      'We design and develop websites, mobile apps, and enterprise platforms that load ultra-fast, work across every device, and convert visitors into loyal customers.',
     subServices: [
-      { icon: MonitorSmartphone, label: 'Website Design & Development' },
+      { icon: Monitor, label: 'Website Design & Development' },
       { icon: Smartphone, label: 'Web & Mobile App Development' },
       { icon: ShoppingCart, label: 'E-commerce Solutions' },
       { icon: Code2, label: 'Custom Software Engineering' },
       { icon: Database, label: 'Database Architecture' },
-      { icon: Cloud, label: 'Cloud & DevOps' },
-      { icon: Cog, label: 'Business Automation' },
+      { icon: Cloud, label: 'Cloud & DevOps Infrastructure' },
+      { icon: Cog, label: 'Business Process Automation' },
     ],
   },
   {
     id: 'design',
-    icon: Brush,
+    icon: Sparkles,
     label: 'Design',
     description:
-      'Your brand is your first impression. We craft identities, visuals, and experiences that make you impossible to ignore and easy to trust.',
+      'Your brand is your first impression. We craft identities, visuals, and digital experiences that make you impossible to ignore and easy to trust.',
     subServices: [
-      { icon: Palette, label: 'Brand Design' },
-      { icon: PenTool, label: 'Graphic Design' },
-      { icon: LayoutTemplate, label: 'UX/UI Design' },
-      { icon: Video, label: 'Video & Animation' },
+      { icon: Palette, label: 'Brand Identity & Strategy' },
+      { icon: Layout, label: 'UI/UX Interface Design' },
+      { icon: PenTool, label: 'Graphic & Marketing Assets' },
+      { icon: Video, label: 'Video Production & Motion Graphics' },
+      { icon: Layers, label: 'Design Systems & Guidelines' },
     ],
   },
 ];
@@ -106,33 +106,28 @@ export function ServicesCategory({ onNavigate }: ServicesCategoryProps) {
   const active = categories.find((c) => c.id === activeId)!;
 
   return (
-    <section className="py-24 bg-[#04080f] relative overflow-hidden select-none">
-      {/* Ambient glows */}
+    <section className="py-24 md:py-32 bg-[#050608] relative overflow-hidden select-none">
+      {/* Background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[20%] left-[10%] w-[35vw] h-[35vw] bg-cyan-500/6 rounded-full blur-[150px]" />
-        <div className="absolute bottom-[10%] right-[5%] w-[28vw] h-[28vw] bg-emerald-500/5 rounded-full blur-[130px]" />
+        <div
+          className="absolute top-0 right-0 w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] opacity-25 rounded-full blur-[140px]"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 229, 176, 0.25) 0%, rgba(6, 182, 212, 0.1) 50%, transparent 80%)',
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-[-10%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] opacity-15 rounded-full blur-[160px]"
+          style={{
+            background: 'radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%)',
+          }}
+        />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-        {/* Section header */}
-        <div className="mb-14">
-          <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-[3px] h-5 bg-gradient-to-b from-[#00d2ff] to-[#3b82f6] rounded-full" />
-            <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#00d2ff]">
-              Our Services
-            </span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-heading font-black text-white leading-tight tracking-tight max-w-xl">
-            Everything your business<br />
-            <span className="text-[#00d2ff]">needs to grow.</span>
-          </h2>
-        </div>
-
-        {/* Main layout */}
-        <div className="flex flex-col lg:flex-row gap-0 lg:gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* ── LEFT SIDEBAR: Category tabs ─────────────────── */}
-          <div className="flex flex-row lg:flex-col gap-0 border-b lg:border-b-0 lg:border-r border-white/10 lg:w-[220px] shrink-0">
+          {/* ── LEFT COLUMN: Big Category Tabs ─────────────────── */}
+          <div className="lg:col-span-4 flex flex-row lg:flex-col gap-6 lg:gap-14 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-none">
             {categories.map((cat) => {
               const Icon = cat.icon;
               const isActive = cat.id === activeId;
@@ -140,30 +135,22 @@ export function ServicesCategory({ onNavigate }: ServicesCategoryProps) {
                 <button
                   key={cat.id}
                   onClick={() => setActiveId(cat.id)}
-                  className={`group flex items-center gap-3.5 px-5 py-7 lg:py-8 w-full text-left border-b border-white/10 transition-all duration-300 relative ${
-                    isActive ? 'text-white' : 'text-white/35 hover:text-white/70'
-                  }`}
+                  className="group flex items-center gap-4 md:gap-5 text-left transition-all duration-300 outline-none focus:outline-none whitespace-nowrap lg:whitespace-normal"
                 >
-                  {/* Active left bar on desktop */}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeBar"
-                      className="hidden lg:block absolute right-0 top-0 h-full w-[3px] bg-[#00d2ff] rounded-l-full"
-                    />
-                  )}
-                  {/* Active bottom bar on mobile */}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeBarMobile"
-                      className="lg:hidden absolute bottom-0 left-0 w-full h-[3px] bg-[#00d2ff] rounded-t-full"
-                    />
-                  )}
                   <Icon
-                    size={20}
-                    className={`shrink-0 transition-colors duration-300 ${isActive ? 'text-[#00d2ff]' : 'text-white/35 group-hover:text-white/60'}`}
+                    strokeWidth={2.2}
+                    className={`w-7 h-7 md:w-9 md:h-9 transition-all duration-300 shrink-0 ${
+                      isActive
+                        ? 'text-[#00e5b0] scale-110 drop-shadow-[0_0_12px_rgba(0,229,176,0.5)]'
+                        : 'text-[#1e3a35] group-hover:text-[#00e5b0]/60'
+                    }`}
                   />
                   <span
-                    className={`text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : ''}`}
+                    className={`text-2xl md:text-4xl lg:text-[42px] font-bold tracking-tight transition-all duration-300 ${
+                      isActive
+                        ? 'text-white'
+                        : 'text-[#444a56] group-hover:text-slate-300'
+                    }`}
                   >
                     {cat.label}
                   </span>
@@ -172,51 +159,54 @@ export function ServicesCategory({ onNavigate }: ServicesCategoryProps) {
             })}
           </div>
 
-          {/* ── RIGHT PANEL: Description + service grid ───────── */}
-          <div className="flex-1 lg:pl-14 pt-10 lg:pt-0">
+          {/* ── RIGHT COLUMN: Description, Learn More, and Solid Card Grid ───────── */}
+          <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeId}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Description */}
-                <p className="text-[15px] text-white/60 max-w-2xl leading-relaxed mb-4">
+                <p className="text-white/90 text-base md:text-lg font-normal leading-relaxed max-w-2xl mb-4">
                   {active.description}
                 </p>
 
-                {/* "Learn more" link */}
-                <button
-                  onClick={() => onNavigate('services')}
-                  className="inline-flex items-center gap-1.5 text-[13px] font-bold text-white/80 hover:text-[#00d2ff] transition-colors duration-200 mb-8 group"
-                >
-                  Learn more
-                  <ArrowUpRight
-                    size={14}
-                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
-                  />
-                </button>
+                {/* "Learn more ↗" link */}
+                <div className="mb-8">
+                  <button
+                    onClick={() => onNavigate('services')}
+                    className="inline-flex items-center gap-2 text-[15px] font-bold text-white hover:text-[#00e5b0] transition-colors duration-200 group"
+                  >
+                    <span>Learn more</span>
+                    <ArrowUpRight
+                      size={18}
+                      className="text-[#00e5b0] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
+                    />
+                  </button>
+                </div>
 
-                {/* Sub-services grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {/* Sub-services Card Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-4.5">
                   {active.subServices.map((svc, i) => {
                     const SvcIcon = svc.icon;
                     return (
                       <motion.div
                         key={svc.label}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.25, delay: i * 0.04 }}
+                        initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.25, delay: i * 0.035 }}
                         onClick={() => onNavigate('services')}
-                        className="group flex items-center gap-3 bg-[#0d1525] hover:bg-[#111e33] border border-white/8 hover:border-[#00d2ff]/30 rounded-lg px-4 py-4 cursor-pointer transition-all duration-200"
+                        className="group flex items-center gap-4 bg-[#18191c] hover:bg-[#202126] border border-white/[0.04] hover:border-[#00e5b0]/25 rounded-[18px] px-5 py-5 min-h-[92px] cursor-pointer transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
                       >
                         <SvcIcon
-                          size={18}
-                          className="shrink-0 text-[#00d2ff] group-hover:scale-110 transition-transform duration-200"
+                          size={22}
+                          strokeWidth={2}
+                          className="shrink-0 text-[#00e5b0] transition-transform duration-200 group-hover:scale-110"
                         />
-                        <span className="text-[13px] font-semibold text-white/80 group-hover:text-white leading-snug transition-colors duration-200">
+                        <span className="text-[14.5px] md:text-[15px] font-bold text-white leading-snug tracking-tight">
                           {svc.label}
                         </span>
                       </motion.div>
@@ -232,3 +222,4 @@ export function ServicesCategory({ onNavigate }: ServicesCategoryProps) {
     </section>
   );
 }
+
