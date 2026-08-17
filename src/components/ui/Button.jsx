@@ -1,16 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline';
-  children: React.ReactNode;
-}
+
 export function Button({
   variant = 'primary',
   children,
   className = '',
   ...props
-}: ButtonProps) {
+}) {
   const isPrimary = variant === 'primary';
   return (
     <motion.button
@@ -38,6 +35,6 @@ export function Button({
         
         <ArrowRight size={14} strokeWidth={2.5} />
       </motion.div>
-    </motion.button>);
-
+    </motion.button>
+  );
 }

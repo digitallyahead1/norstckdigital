@@ -14,14 +14,14 @@ import { ThemeProvider } from './context/ThemeContext';
 export function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // ── Dynamic per-page SEO: update <title> and <meta name="description"> ──
   useEffect(() => {
-    const pageMeta: Record<string, { title: string; description: string }> = {
+    const pageMeta = {
       home: {
         title: 'Norstack Digital | Premium Web & Software Development Agency — Abuja, Nigeria',
         description: 'Norstack Digital is a top-rated digital agency in Nigeria. We build premium websites, custom software, mobile apps, SEO systems & AI automation for ambitious brands. Get a free audit today.',
@@ -52,7 +52,7 @@ export function App() {
     document.title = meta.title;
 
     // Update meta description
-    let descEl = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const descEl = document.querySelector('meta[name="description"]');
     if (descEl) descEl.setAttribute('content', meta.description);
   }, [currentPage]);
 

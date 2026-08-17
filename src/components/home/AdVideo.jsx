@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 // Base video ID
 const VIDEO_ID = '-br-v9IY7_A';
 
-const buildSrc = (autoplay: boolean) =>
+const buildSrc = (autoplay) =>
   `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&color=white&enablejsapi=1${
     autoplay ? '&autoplay=1' : ''
   }`;
 
 export function AdVideo() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const sectionRef = useRef(null);
+  const iframeRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {

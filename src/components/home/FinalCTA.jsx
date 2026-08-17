@@ -1,12 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, ShieldCheck, Zap, MessageSquare } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, MessageSquare } from 'lucide-react';
 
-interface FinalCTAProps {
-  onNavigate: (page: string) => void;
-}
-
-export function FinalCTA({ onNavigate }: FinalCTAProps) {
+export function FinalCTA({ onNavigate }) {
   return (
     <section className="py-32 md:py-40 px-6 md:px-12 bg-brand-bg text-center relative overflow-hidden select-none">
       {/* Background Aurora Gradients */}

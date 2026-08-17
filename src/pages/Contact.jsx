@@ -16,18 +16,16 @@ export function Contact() {
     message: '',
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const serviceMap: Record<string, string> = {
+    const serviceMap = {
       full: 'Full Package (End-to-End)',
       web: 'Website Development',
       software: 'Software Development',
@@ -35,7 +33,7 @@ export function Contact() {
       marketing: 'Digital Marketing & SEO',
     };
 
-    const budgetMap: Record<string, string> = {
+    const budgetMap = {
       tier1: '₦250k – ₦500k',
       tier2: '₦500k – ₦1.2M',
       tier3: '₦1.2M – ₦3M',

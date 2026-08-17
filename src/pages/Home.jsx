@@ -7,11 +7,7 @@ import { StrategyPlanner } from '../components/home/StrategyPlanner';
 import { Testimonials } from '../components/home/Testimonials';
 import { FinalCTA } from '../components/home/FinalCTA';
 
-interface HomeProps {
-  onNavigate: (page: string) => void;
-}
-
-export function Home({ onNavigate }: HomeProps) {
+export function Home({ onNavigate }) {
   return (
     <div className="w-full">
       {/* 1. Hero Showcase */}

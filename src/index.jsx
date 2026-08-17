@@ -3,17 +3,17 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 
-class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean, error: Error | null}> {
-  constructor(props: any) {
+class ErrorBoundary extends React.Component {
+  constructor(props) {
     super(props);
     this.state = { hasError: false, error: null };
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError(error) {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  componentDidCatch(error, errorInfo) {
     console.error("ErrorBoundary caught an error", error, errorInfo);
   }
 

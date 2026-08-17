@@ -11,10 +11,6 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 
-interface HeroProps {
-  onNavigate: (page: string) => void;
-}
-
 const services = [
   {
     icon: Globe,
@@ -67,7 +63,7 @@ const rotatingWords = [
   { text: "High Conversions.", color: "text-purple-400" },
 ];
 
-export function Hero({ onNavigate }: HeroProps) {
+export function Hero({ onNavigate }) {
   const [currentWordIdx, setCurrentWordIdx] = useState(0);
   const [typedLength, setTypedLength] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -76,7 +72,7 @@ export function Hero({ onNavigate }: HeroProps) {
   stateRef.current = { typedLength, isDeleting, currentWordIdx };
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer;
 
     const loop = () => {
       const { typedLength: len, isDeleting: del, currentWordIdx: idx } = stateRef.current;

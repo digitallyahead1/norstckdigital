@@ -1,4 +1,5 @@
 import React from 'react';
+
 export function Noise() {
   return (
     <div className="pointer-events-none fixed inset-0 z-40 h-full w-full opacity-[0.04] mix-blend-overlay">
@@ -9,10 +10,9 @@ export function Noise() {
             baseFrequency="0.8"
             numOctaves="3"
             stitchTiles="stitch" />
-          
         </filter>
         <rect width="100%" height="100%" filter="url(#noiseFilter)" />
       </svg>
-    </div>);
-
+    </div>
+  );
 }

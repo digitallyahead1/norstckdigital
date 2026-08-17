@@ -1,19 +1,13 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light';
-
-interface ThemeContextValue {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextValue>({
+const ThemeContext = createContext({
   theme: 'dark',
   toggleTheme: () => {},
 });
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState(() => {
     // Default is dark; only restore light if explicitly saved
     const stored = localStorage.getItem('ns-theme');
     return stored === 'light' ? 'light' : 'dark';

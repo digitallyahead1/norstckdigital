@@ -1,10 +1,7 @@
 import React from 'react';
 import { MapPin, Mail, Phone } from 'lucide-react';
 
-interface FooterProps {
-  onNavigate: (page: string) => void;
-}
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer({ onNavigate }) {
   return (
     <footer className="bg-brand-bg relative z-10 overflow-hidden pt-32 pb-10 dark-theme">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -112,21 +109,21 @@ export function Footer({ onNavigate }: FooterProps) {
             </h4>
             <ul className="space-y-4">
               {[
-              'Website Dev',
-              'Software Dev',
-              'App Dev',
-              'UI/UX Design',
-              'Digital Marketing'].
-              map((item) =>
-              <li key={item}>
+                'Website Dev',
+                'Software Dev',
+                'App Dev',
+                'UI/UX Design',
+                'Digital Marketing'
+              ].map((item) => (
+                <li key={item}>
                   <button
-                  onClick={() => onNavigate('services')}
-                  className="text-brand-text1 hover:text-brand-gold text-sm transition-colors font-medium">
-                  
+                    onClick={() => onNavigate('services')}
+                    className="text-brand-text1 hover:text-brand-gold text-sm transition-colors font-medium"
+                  >
                     {item}
                   </button>
                 </li>
-              )}
+              ))}
             </ul>
           </div>
 
@@ -136,18 +133,18 @@ export function Footer({ onNavigate }: FooterProps) {
               Company
             </h4>
             <ul className="space-y-4">
-              {['About Us', 'Portfolio', 'Pricing', 'Careers'].map((item) =>
-              <li key={item}>
+              {['About Us', 'Portfolio', 'Pricing', 'Careers'].map((item) => (
+                <li key={item}>
                   <button
-                  onClick={() =>
-                  onNavigate(item.toLowerCase().replace(' ', ''))
-                  }
-                  className="text-brand-text1 hover:text-brand-gold text-sm transition-colors font-medium">
-                  
+                    onClick={() =>
+                      onNavigate(item.toLowerCase().replace(' ', ''))
+                    }
+                    className="text-brand-text1 hover:text-brand-gold text-sm transition-colors font-medium"
+                  >
                     {item}
                   </button>
                 </li>
-              )}
+              ))}
             </ul>
           </div>
 
@@ -175,8 +172,8 @@ export function Footer({ onNavigate }: FooterProps) {
             </ul>
             <button
               onClick={() => onNavigate('contact')}
-              className="mt-8 text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gold hover:text-brand-goldHi transition-colors flex items-center gap-2 group">
-              
+              className="mt-8 text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gold hover:text-brand-goldHi transition-colors flex items-center gap-2 group"
+            >
               Start a Project
               <span className="group-hover:translate-x-1 transition-transform">
                 &rarr;
@@ -199,6 +196,6 @@ export function Footer({ onNavigate }: FooterProps) {
           developed by Norstack Digital IT Team
         </div>
       </div>
-    </footer>);
-
+    </footer>
+  );
 }

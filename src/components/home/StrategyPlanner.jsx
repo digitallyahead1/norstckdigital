@@ -8,28 +8,11 @@ import {
   ArrowUpRight,
   ArrowRight,
   Zap,
-  Layers,
   Smartphone,
   Sparkles,
 } from 'lucide-react';
 
-interface StrategyPlannerProps {
-  onNavigate: (page: string) => void;
-}
-
-interface StrategyObjective {
-  id: string;
-  icon: React.ElementType;
-  label: string;
-  headline: string;
-  description: string;
-  timeline: string;
-  roi: string;
-  architecture: string;
-  milestone: string;
-}
-
-const strategies: StrategyObjective[] = [
+const strategies = [
   {
     id: 'conversions',
     icon: TrendingUp,
@@ -80,8 +63,8 @@ const strategies: StrategyObjective[] = [
   },
 ];
 
-export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
-  const [activeId, setActiveId] = useState<string>('conversions');
+export function StrategyPlanner({ onNavigate }) {
+  const [activeId, setActiveId] = useState('conversions');
   const active = strategies.find((s) => s.id === activeId) || strategies[0];
 
   return (
@@ -274,4 +257,3 @@ export function StrategyPlanner({ onNavigate }: StrategyPlannerProps) {
     </section>
   );
 }
-

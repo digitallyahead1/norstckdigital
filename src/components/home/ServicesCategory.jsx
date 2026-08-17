@@ -32,24 +32,7 @@ import {
   Layers,
 } from 'lucide-react';
 
-interface ServicesCategoryProps {
-  onNavigate: (page: string) => void;
-}
-
-interface SubService {
-  icon: React.ElementType;
-  label: string;
-}
-
-interface Category {
-  id: string;
-  icon: React.ElementType;
-  label: string;
-  description: string;
-  subServices: SubService[];
-}
-
-const categories: Category[] = [
+const categories = [
   {
     id: 'marketing',
     icon: Megaphone,
@@ -101,9 +84,9 @@ const categories: Category[] = [
   },
 ];
 
-export function ServicesCategory({ onNavigate }: ServicesCategoryProps) {
-  const [activeId, setActiveId] = useState<string>('marketing');
-  const active = categories.find((c) => c.id === activeId)!;
+export function ServicesCategory({ onNavigate }) {
+  const [activeId, setActiveId] = useState('marketing');
+  const active = categories.find((c) => c.id === activeId) || categories[0];
 
   return (
     <section className="py-24 md:py-32 bg-[#050608] relative overflow-hidden select-none">
@@ -222,4 +205,3 @@ export function ServicesCategory({ onNavigate }: ServicesCategoryProps) {
     </section>
   );
 }
-

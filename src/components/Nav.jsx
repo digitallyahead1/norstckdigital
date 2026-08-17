@@ -4,12 +4,7 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from './ui/Button';
 import { useTheme } from '../context/ThemeContext';
 
-interface NavProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
-}
-
-export function Nav({ currentPage, onNavigate }: NavProps) {
+export function Nav({ currentPage, onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -29,7 +24,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
     { id: 'contact', label: 'Contact' },
   ];
 
-  const handleNavClick = (id: string) => {
+  const handleNavClick = (id) => {
     onNavigate(id);
     setIsMobileMenuOpen(false);
   };

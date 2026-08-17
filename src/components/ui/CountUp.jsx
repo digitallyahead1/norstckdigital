@@ -1,20 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useInView, animate } from 'framer-motion';
-interface CountUpProps {
-  to: number;
-  suffix?: string;
-  prefix?: string;
-  duration?: number;
-  className?: string;
-}
+
 export function CountUp({
   to,
   suffix = '',
   prefix = '',
   duration = 2,
   className = ''
-}: CountUpProps) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
+}) {
+  const nodeRef = useRef(null);
   const inView = useInView(nodeRef, {
     once: true,
     margin: '-50px'
@@ -36,6 +30,6 @@ export function CountUp({
   return (
     <span ref={nodeRef} className={className}>
       {prefix}0{suffix}
-    </span>);
-
+    </span>
+  );
 }

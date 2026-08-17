@@ -35,27 +35,7 @@ import {
   Layers,
 } from 'lucide-react';
 
-interface ServicesProps {
-  onNavigate: (page: string) => void;
-}
-
-interface SubService {
-  icon: React.ElementType;
-  label: string;
-  desc: string;
-  deliverables: string[];
-}
-
-interface Category {
-  id: string;
-  icon: React.ElementType;
-  label: string;
-  tagline: string;
-  description: string;
-  subServices: SubService[];
-}
-
-const categories: Category[] = [
+const categories = [
   {
     id: 'marketing',
     icon: Megaphone,
@@ -220,8 +200,8 @@ const categories: Category[] = [
   },
 ];
 
-export function Services({ onNavigate }: ServicesProps) {
-  const [activeId, setActiveId] = useState<string>('marketing');
+export function Services({ onNavigate }) {
+  const [activeId, setActiveId] = useState('marketing');
   const active = categories.find((c) => c.id === activeId) || categories[0];
 
   return (

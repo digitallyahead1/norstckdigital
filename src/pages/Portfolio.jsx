@@ -2,11 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/ui/Button';
 
-interface PortfolioProps {
-  onNavigate: (page: string) => void;
-}
-
-export function Portfolio({ onNavigate }: PortfolioProps) {
+export function Portfolio({ onNavigate }) {
   const projects = [
     {
       name: 'CMANVerify',

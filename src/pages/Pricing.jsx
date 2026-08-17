@@ -2,12 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/ui/Button';
 
-interface PricingProps {
-  onNavigate: (page: string) => void;
-}
-
-export function Pricing({ onNavigate }: PricingProps) {
-  const handleAskPricing = (packageName: string) => {
+export function Pricing({ onNavigate }) {
+  const handleAskPricing = (packageName) => {
     const message = `Hello Northstack Digital, I would like to ask for pricing details regarding the ${packageName} package.`;
     const whatsappUrl = `https://wa.me/2348026495929?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

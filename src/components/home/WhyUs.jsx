@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CountUp } from '../ui/CountUp';
-import { Check, ShieldCheck, Zap, TrendingUp, Users, Award } from 'lucide-react';
+import { ShieldCheck, Zap, TrendingUp, Users, Award } from 'lucide-react';
 
 export function WhyUs() {
   const checklist = [
