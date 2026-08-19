@@ -43,10 +43,20 @@ export function Nav({ currentPage, onNavigate }) {
   return (
     <nav
       aria-label="Main navigation"
+      style={{
+        backgroundColor: '#050a0c',
+        '--bg-0': '#050a0c',
+        '--bg-1': '#090e1a',
+        '--bg-2': '#090e1a',
+        '--text-1': '#f8fafc',
+        '--text-2': '#f8fafc',
+        '--text-3': '#f8fafc',
+        '--border-1': 'rgba(17, 135, 199, 0.2)',
+      }}
       className={`fixed top-0 left-0 right-0 z-50 pt-3 md:pt-4 transition-all duration-300 ${
         isScrolled
-          ? 'bg-brand-bg/90 backdrop-blur-xl shadow-lg pb-3 md:pb-4'
-          : 'bg-brand-bg/60 backdrop-blur-md pb-3 md:pb-4'
+          ? 'backdrop-blur-xl shadow-lg pb-3 md:pb-4'
+          : 'backdrop-blur-md pb-3 md:pb-4'
       }`}
     >
       <div className="h-full max-w-[1400px] mx-auto px-5 sm:px-6 md:px-12 flex items-center justify-between">
@@ -184,7 +194,8 @@ export function Nav({ currentPage, onNavigate }) {
             id="mobile-nav-menu"
             role="dialog"
             aria-label="Mobile navigation menu"
-            className="md:hidden fixed top-0 left-0 w-full max-h-[92vh] z-[9999] bg-brand-bg border-b border-brand-border1 shadow-2xl flex flex-col p-4 sm:p-5 overflow-y-auto select-none rounded-b-3xl"
+            className="md:hidden fixed top-0 left-0 w-full max-h-[92vh] z-[9999] border-b border-brand-border1 shadow-2xl flex flex-col p-4 sm:p-5 overflow-y-auto select-none rounded-b-3xl"
+            style={{ backgroundColor: '#050a0c' }}
           >
             {/* Top Bar inside Mobile Modal */}
             <div className="flex items-center justify-between pb-3 border-b border-brand-border1/60">

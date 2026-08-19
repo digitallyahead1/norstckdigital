@@ -3,18 +3,18 @@ import { MapPin, Mail, Phone } from 'lucide-react';
 
 export function Footer({ onNavigate }) {
   return (
-    <footer className="bg-brand-bg relative z-10 overflow-hidden pt-32 pb-10 border-t border-brand-border1">
+    <footer className="relative z-10 overflow-hidden pt-14 pb-10 border-brand-border1" style={{ backgroundColor: '#050a0c', borderTopWidth: '1px', borderTopStyle: 'solid', borderTopColor: 'rgba(17, 135, 199, 0.2)', '--bg-0': '#050a0c', '--bg-1': '#090e1a', '--bg-2': '#090e1a', '--bg-3': '#090e1a', '--text-1': '#f8fafc', '--text-2': '#f8fafc', '--text-3': '#f8fafc', '--border-1': 'rgba(17, 135, 199, 0.2)' }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Massive Wordmark */}
-        <div className="w-full overflow-hidden mb-16">
-          <h2 className="text-[clamp(4rem,18vw,16rem)] font-heading font-extrabold leading-[0.85] tracking-[-0.04em] text-brand-text1/5 select-none">
+        <div className="w-full overflow-hidden mb-8">
+          <h2 className="text-[clamp(2.5rem,8vw,7rem)] font-heading font-extrabold leading-[0.85] tracking-[-0.04em] text-brand-text1/5 select-none">
             NORSTACK
           </h2>
         </div>
 
         <div className="h-px w-full bg-brand-gold/20 mb-16"></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <button onClick={() => onNavigate('home')} className="flex items-center gap-3 text-left group mb-6">

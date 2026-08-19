@@ -14,7 +14,7 @@ export function Marquee() {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden bg-brand-surface1/60 backdrop-blur-md py-6 md:py-8 flex items-center">
+    <div className="relative w-full overflow-hidden backdrop-blur-md py-6 md:py-8 flex items-center" style={{ backgroundColor: '#090e1a', '--bg-0': '#050a0c', '--bg-1': '#090e1a', '--bg-2': '#090e1a', '--text-1': '#f8fafc', '--text-2': '#f8fafc', '--text-3': '#f8fafc', '--border-1': 'rgba(17, 135, 199, 0.2)' }}>
       <div className="flex whitespace-nowrap animate-marquee select-none items-center">
         {/* Render 3 copies for ultra-smooth infinite loop */}
         {[...Array(3)].map((_, i) => (
