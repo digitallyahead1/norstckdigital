@@ -21,7 +21,7 @@ export default {
           goldDim:  'var(--gold-dim)',
           cyan:     'var(--gold)',
           purple:   'var(--purple)',
-          violet:   '#8b5cf6',
+          violet:   'var(--purple)',
           blue:     'var(--blue)',
           text1:    'var(--text-1)',
           text2:    'var(--text-2)',
@@ -39,7 +39,7 @@ export default {
         'lux': 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       animation: {
-        'marquee': 'marquee 25s linear infinite',
+        'marquee': 'marquee 50s linear infinite',
       },
       keyframes: {
         marquee: {

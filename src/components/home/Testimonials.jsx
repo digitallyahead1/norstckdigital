@@ -10,8 +10,8 @@ export function Testimonials() {
       quote:
         'Northstack built our entire online academy platform from scratch. The design is stunning, enrolment has gone up significantly, and students keep complimenting how smooth the experience feels.',
       logo: '/clients/rft-academy-logo.png',
-      logoBg: 'bg-[#f3eef6]',
-      accentColor: '#7a1f6b',
+      logoBg: 'bg-[#f8fafc]',
+      accentColor: '#1187c7',
     },
     {
       name: 'Usman Bashir Sani',
@@ -20,8 +20,8 @@ export function Testimonials() {
       quote:
         'The verification platform Northstack delivered is world-class. Their team understood our complex compliance requirements and turned them into a seamless, enterprise-ready product.',
       logo: '/clients/cmanverify-logo.jpg',
-      logoBg: 'bg-white',
-      accentColor: '#1a3d8f',
+      logoBg: 'bg-[#f8fafc]',
+      accentColor: '#1187c7',
     },
     {
       name: 'MBRTS Team',
@@ -31,8 +31,8 @@ export function Testimonials() {
         'Working with Northstack was effortless. They delivered a clean, high-performance website that truly represents our brand and has meaningfully improved our online presence.',
       logo: null,
       initials: 'MB',
-      logoBg: 'bg-gradient-to-br from-[#0a1525] to-[#1a3050]',
-      accentColor: '#0ea5e9',
+      logoBg: 'bg-brand-surface1',
+      accentColor: '#1187c7',
     },
   ];
 
@@ -41,7 +41,6 @@ export function Testimonials() {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-20 text-center flex flex-col items-center">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
             <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text2">
               Client Results
             </span>

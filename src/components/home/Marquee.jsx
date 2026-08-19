@@ -14,11 +14,7 @@ export function Marquee() {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden border-y border-brand-border1 bg-brand-surface1/60 backdrop-blur-md py-6 md:py-8 flex items-center">
-      {/* Edge gradient fade masks */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-brand-bg to-transparent z-10" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-brand-bg to-transparent z-10" />
-
+    <div className="relative w-full overflow-hidden bg-brand-surface1/60 backdrop-blur-md py-6 md:py-8 flex items-center">
       <div className="flex whitespace-nowrap animate-marquee select-none items-center">
         {/* Render 3 copies for ultra-smooth infinite loop */}
         {[...Array(3)].map((_, i) => (
@@ -27,19 +23,18 @@ export function Marquee() {
               const Icon = item.icon;
               return (
                 <Fragment key={`${i}-${j}`}>
-                  <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-brand-border1 bg-brand-surface2/70 hover:border-brand-gold/40 transition-colors shadow-sm">
-                    <span className="w-6 h-6 rounded-lg bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold">
+                  <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-brand-surface2/70 transition-colors shadow-sm">
+                    <span className="w-6 h-6 bg-brand-gold/10 flex items-center justify-center text-brand-gold">
                       <Icon size={13} />
                     </span>
                     <span className={`text-xs md:text-sm font-heading font-black tracking-widest uppercase ${
                       item.highlight 
-                        ? 'bg-gradient-to-r from-[#00d2ff] via-[#3b82f6] to-[#a855f7] bg-clip-text text-transparent' 
+                        ? 'text-[#1187c7]' 
                         : 'text-brand-text1'
                     }`}>
                       {item.label}
                     </span>
                   </div>
-                  <span className="text-brand-gold/40 text-xs font-black">✦</span>
                 </Fragment>
               );
             })}

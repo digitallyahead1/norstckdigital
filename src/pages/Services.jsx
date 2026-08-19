@@ -205,40 +205,24 @@ export function Services({ onNavigate }) {
   const active = categories.find((c) => c.id === activeId) || categories[0];
 
   return (
-    <div className="min-h-screen pt-28 md:pt-36 pb-32 bg-[#050608] text-white">
-      {/* Background ambient glow */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div
-          className="absolute top-0 right-0 w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] opacity-20 rounded-full blur-[140px]"
-          style={{
-            background: 'radial-gradient(circle, rgba(0, 229, 176, 0.2) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 80%)',
-          }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] opacity-15 rounded-full blur-[160px]"
-          style={{
-            background: 'radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%)',
-          }}
-        />
-      </div>
-
+    <div className="min-h-screen pt-28 md:pt-36 pb-32 bg-brand-bg text-brand-text1">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         
         {/* ── Page Header ─────────────────────────────────── */}
         <div className="mb-14 md:mb-20">
           <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-[3px] h-5 rounded-full bg-gradient-to-b from-[#00e5b0] to-[#00d2ff]" />
-            <span className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#00e5b0]">
+            <span className="w-[3px] h-5 rounded-full bg-brand-gold" />
+            <span className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-brand-gold">
               Capabilities &amp; Solutions
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.1] tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-brand-text1 leading-[1.1] tracking-tight mb-6">
             Services Designed for{' '}
-            <span className="font-editorial bg-gradient-to-r from-[#00e5b0] via-[#00d2ff] to-[#a855f7] bg-clip-text text-transparent italic">
+            <span className="font-editorial text-brand-gold italic">
               Business Growth
             </span>
           </h1>
-          <p className="text-[16px] md:text-[17px] text-slate-300 max-w-3xl leading-relaxed">
+          <p className="text-[16px] md:text-[17px] text-brand-text2 max-w-3xl leading-relaxed">
             From strategic marketing to full-stack engineering and high-end design — explore how Norstack delivers turnkey digital solutions built to drive measurable revenue.
           </p>
         </div>
@@ -261,15 +245,15 @@ export function Services({ onNavigate }) {
                     strokeWidth={2.2}
                     className={`w-7 h-7 md:w-9 md:h-9 transition-all duration-300 shrink-0 ${
                       isActive
-                        ? 'text-[#00e5b0] scale-110 drop-shadow-[0_0_12px_rgba(0,229,176,0.5)]'
-                        : 'text-[#1e3a35] group-hover:text-[#00e5b0]/60'
+                        ? 'text-brand-gold scale-110'
+                        : 'text-brand-gold/40 group-hover:text-brand-gold'
                     }`}
                   />
                   <span
                     className={`text-2xl md:text-4xl lg:text-[42px] font-bold tracking-tight transition-all duration-300 ${
                       isActive
-                        ? 'text-white'
-                        : 'text-[#444a56] group-hover:text-slate-300'
+                        ? 'text-brand-text1'
+                        : 'text-brand-text2/50 group-hover:text-brand-text1'
                     }`}
                   >
                     {cat.label}
@@ -290,7 +274,7 @@ export function Services({ onNavigate }) {
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Category Header */}
-                <p className="text-white text-base md:text-lg font-normal leading-relaxed max-w-3xl mb-3">
+                <p className="text-brand-text1 text-base md:text-lg font-normal leading-relaxed max-w-3xl mb-3">
                   {active.description}
                 </p>
 
@@ -298,12 +282,12 @@ export function Services({ onNavigate }) {
                 <div className="mb-8">
                   <button
                     onClick={() => onNavigate('contact')}
-                    className="inline-flex items-center gap-2 text-[15px] font-bold text-white hover:text-[#00e5b0] transition-colors duration-200 group cursor-pointer"
+                    className="inline-flex items-center gap-2 text-[15px] font-bold text-brand-text1 hover:text-brand-gold transition-colors duration-200 group cursor-pointer"
                   >
                     <span>Request a proposal for {active.label}</span>
                     <ArrowUpRight
                       size={18}
-                      className="text-[#00e5b0] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
+                      className="text-brand-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
                     />
                   </button>
                 </div>
@@ -319,24 +303,24 @@ export function Services({ onNavigate }) {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.25, delay: i * 0.03 }}
                         onClick={() => onNavigate('contact')}
-                        className="group flex flex-col justify-between bg-[#18191c] hover:bg-[#202126] border border-white/[0.04] hover:border-[#00e5b0]/30 rounded-[20px] p-5 min-h-[140px] cursor-pointer transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+                        className="group flex flex-col justify-between bg-brand-surface1 hover:bg-brand-surface2 border border-brand-border1 hover:border-brand-border2 rounded-[20px] p-5 min-h-[140px] cursor-pointer transition-all duration-200 shadow-sm"
                       >
                         <div className="flex items-center gap-3.5 mb-3">
                           <SvcIcon
                             size={22}
                             strokeWidth={2}
-                            className="shrink-0 text-[#00e5b0] transition-transform duration-200 group-hover:scale-110"
+                            className="shrink-0 text-brand-gold transition-transform duration-200 group-hover:scale-110"
                           />
-                          <span className="text-[15px] font-bold text-white leading-snug tracking-tight">
+                          <span className="text-[15px] font-bold text-brand-text1 leading-snug tracking-tight">
                             {svc.label}
                           </span>
                         </div>
 
-                        <p className="text-[12.5px] text-slate-400 leading-relaxed line-clamp-2 mb-3">
+                        <p className="text-[12.5px] text-brand-text2 leading-relaxed line-clamp-2 mb-3">
                           {svc.desc}
                         </p>
 
-                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#00e5b0] opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-auto">
+                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-auto">
                           <span>Get Started</span>
                           <ArrowRight size={12} />
                         </div>
@@ -351,12 +335,12 @@ export function Services({ onNavigate }) {
         </div>
 
         {/* ── Complete Capabilities Feature Deep-Dive ───────── */}
-        <div className="pt-16 border-t border-white/10 mb-20">
+        <div className="pt-16 border-t border-brand-border1 mb-20">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-brand-text1 mb-4">
               What We Deliver
             </h2>
-            <p className="text-slate-400 text-sm md:text-base">
+            <p className="text-brand-text2 text-sm md:text-base">
               Every project is backed by our full-stack multidisciplinary team with guaranteed quality assurance and end-to-end execution.
             </p>
           </div>
@@ -365,20 +349,20 @@ export function Services({ onNavigate }) {
             {categories.map((cat) => (
               <div
                 key={cat.id}
-                className="bg-[#121316] border border-white/[0.06] rounded-[24px] p-8 flex flex-col justify-between"
+                className="bg-brand-surface1 border border-brand-border1 rounded-[24px] p-8 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <cat.icon className="w-6 h-6 text-[#00e5b0]" />
-                    <h3 className="text-2xl font-bold text-white tracking-tight">{cat.label}</h3>
+                    <cat.icon className="w-6 h-6 text-brand-gold" />
+                    <h3 className="text-2xl font-bold text-brand-text1 tracking-tight">{cat.label}</h3>
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  <p className="text-xs text-brand-text2 leading-relaxed mb-6">
                     {cat.tagline}
                   </p>
                   <ul className="space-y-3 mb-8">
                     {cat.subServices.slice(0, 5).map((sub) => (
-                      <li key={sub.label} className="flex items-center gap-2.5 text-xs text-slate-300">
-                        <CheckCircle2 size={14} className="text-[#00e5b0] shrink-0" />
+                      <li key={sub.label} className="flex items-center gap-2.5 text-xs text-brand-text1">
+                        <CheckCircle2 size={14} className="text-brand-gold shrink-0" />
                         <span>{sub.label}</span>
                       </li>
                     ))}
@@ -390,7 +374,7 @@ export function Services({ onNavigate }) {
                     setActiveId(cat.id);
                     window.scrollTo({ top: 180, behavior: 'smooth' });
                   }}
-                  className="w-full py-3 px-4 rounded-xl bg-white/[0.04] hover:bg-[#00e5b0]/15 text-white hover:text-[#00e5b0] text-xs font-bold uppercase tracking-wider transition-colors duration-200 border border-white/10 flex items-center justify-center gap-2"
+                  className="w-full py-3 px-4 rounded-xl bg-brand-bg hover:bg-brand-gold text-brand-text1 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors duration-200 border border-brand-border1 flex items-center justify-center gap-2"
                 >
                   <span>Explore {cat.label}</span>
                   <ArrowRight size={14} />
@@ -401,27 +385,21 @@ export function Services({ onNavigate }) {
         </div>
 
         {/* ── Bottom Consultation Banner ─────────────────────── */}
-        <div className="relative bg-gradient-to-br from-[#12141a] via-[#101217] to-[#0a0c10] border border-white/10 rounded-[32px] p-10 md:p-16 text-center overflow-hidden shadow-2xl">
-          <div
-            className="absolute inset-0 pointer-events-none opacity-30"
-            style={{
-              background: 'radial-gradient(circle at 50% 50%, rgba(0,229,176,0.15) 0%, transparent 60%)',
-            }}
-          />
+        <div className="relative bg-brand-surface1 border border-brand-border1 rounded-[32px] p-10 md:p-16 text-center overflow-hidden shadow-xl">
           <div className="relative z-10 max-w-xl mx-auto">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#00e5b0] mb-3">
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-brand-gold mb-3">
               Need a Tailored Solution?
             </p>
-            <h2 className="text-3xl md:text-5xl font-heading font-black text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-heading font-black text-brand-text1 mb-4 leading-tight">
               Let's Build Your Digital Advantage
             </h2>
-            <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-8">
+            <p className="text-brand-text2 text-sm md:text-base leading-relaxed mb-8">
               Whether you need a high-converting web platform, custom software architecture, or end-to-end digital marketing, we are ready to accelerate your growth.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => onNavigate('contact')}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#00e5b0] hover:bg-[#00c99a] text-black font-extrabold text-xs uppercase tracking-wider rounded-full px-8 py-4 transition-all duration-300 shadow-[0_0_30px_rgba(0,229,176,0.3)] hover:scale-105 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-gold text-white font-extrabold text-xs uppercase tracking-wider rounded-full px-8 py-4 transition-all duration-300 shadow-md hover:scale-105 cursor-pointer"
               >
                 <span>Start a Project</span>
                 <ArrowRight size={15} />
@@ -430,9 +408,9 @@ export function Services({ onNavigate }) {
                 onClick={() => {
                   window.open('https://wa.me/2348026495929?text=Hello%20Northstack%20Digital,%20I%20would%20like%20to%20discuss%20a%20project.', '_blank');
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/5 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wider rounded-full px-8 py-4 border border-white/10 transition-all duration-300 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-bg text-brand-text1 font-bold text-xs uppercase tracking-wider rounded-full px-8 py-4 border border-brand-border1 transition-all duration-300 cursor-pointer"
               >
-                <Phone size={14} className="text-[#00e5b0]" />
+                <Phone size={14} className="text-brand-gold" />
                 <span>Chat on WhatsApp</span>
               </button>
             </div>

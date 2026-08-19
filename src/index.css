@@ -8,45 +8,68 @@
 
 /* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
-/* ─── DARK THEME (default: sophisticated slate-navy, not harsh pitch black) ─── */
-:root,
-html.dark,
-.dark-theme {
-  --bg-0: #090e1a;
-  --bg-1: #0f172a;
-  --bg-2: #162036;
-  --bg-3: #1e2c48;
-  --warm-dark: #0d1424;
-  --gold: #00d2ff;
-  --gold-hi: #38bdf8;
-  --gold-dim: #0284c7;
-  --purple: #a855f7;
-  --blue: #3b82f6;
-  --text-1: #f8fafc;
-  --text-2: #94a3b8;
-  --text-3: #64748b;
-  --border-1: #1e293b;
-  --border-2: #334155;
+/* ─── STRICT COLOR VARIABLES (#050a0c, #1187c7, #f8fafc, #090e1a) ─── */
+:root {
+  --c-dark-bg: #050a0c;
+  --c-brand-blue: #1187c7;
+  --c-light-slate: #f8fafc;
+  --c-surface-dark: #090e1a;
+
+  --bg-0: var(--c-dark-bg);
+  --bg-1: var(--c-surface-dark);
+  --bg-2: var(--c-surface-dark);
+  --bg-3: var(--c-surface-dark);
+  --warm-dark: var(--c-dark-bg);
+  --gold: var(--c-brand-blue);
+  --gold-hi: var(--c-brand-blue);
+  --gold-dim: var(--c-brand-blue);
+  --purple: var(--c-brand-blue);
+  --blue: var(--c-brand-blue);
+  --text-1: var(--c-light-slate);
+  --text-2: var(--c-light-slate);
+  --text-3: var(--c-light-slate);
+  --border-1: rgba(17, 135, 199, 0.2);
+  --border-2: var(--c-brand-blue);
   color-scheme: dark;
 }
 
-/* ─── LIGHT THEME (clean, minimal, #424242 text, crisp white surfaces) ─── */
+:root,
+html.dark,
+.dark-theme {
+  --bg-0: var(--c-dark-bg);
+  --bg-1: var(--c-surface-dark);
+  --bg-2: var(--c-surface-dark);
+  --bg-3: var(--c-surface-dark);
+  --warm-dark: var(--c-dark-bg);
+  --gold: var(--c-brand-blue);
+  --gold-hi: var(--c-brand-blue);
+  --gold-dim: var(--c-brand-blue);
+  --purple: var(--c-brand-blue);
+  --blue: var(--c-brand-blue);
+  --text-1: var(--c-light-slate);
+  --text-2: var(--c-light-slate);
+  --text-3: var(--c-light-slate);
+  --border-1: rgba(17, 135, 199, 0.2);
+  --border-2: var(--c-brand-blue);
+  color-scheme: dark;
+}
+
 html.light {
-  --bg-0: #f8fafc;
+  --bg-0: var(--c-light-slate);
   --bg-1: #ffffff;
-  --bg-2: #f1f5f9;
-  --bg-3: #e2e8f0;
-  --warm-dark: #f8fafc;
-  --gold: #0284c7;
-  --gold-hi: #00d2ff;
-  --gold-dim: #0369a1;
-  --purple: #7c3aed;
-  --blue: #2563eb;
-  --text-1: #0f172a;
-  --text-2: #424242;
-  --text-3: #6b7280;
-  --border-1: #e2e8f0;
-  --border-2: #cbd5e1;
+  --bg-2: #ffffff;
+  --bg-3: var(--c-light-slate);
+  --warm-dark: var(--c-light-slate);
+  --gold: var(--c-brand-blue);
+  --gold-hi: var(--c-brand-blue);
+  --gold-dim: var(--c-brand-blue);
+  --purple: var(--c-brand-blue);
+  --blue: var(--c-brand-blue);
+  --text-1: var(--c-dark-bg);
+  --text-2: var(--c-surface-dark);
+  --text-3: var(--c-surface-dark);
+  --border-1: rgba(17, 135, 199, 0.2);
+  --border-2: var(--c-brand-blue);
   color-scheme: light;
 }
 
@@ -62,7 +85,7 @@ body {
   @apply bg-brand-bg text-brand-text1 font-sans antialiased overflow-x-hidden;
 }
 ::selection {
-  background-color: rgba(0, 210, 255, 0.3);
+  background-color: rgba(17, 135, 199, 0.3);
   color: var(--gold-hi);
 }
 h1, h2, h3, h4, h5, h6 {

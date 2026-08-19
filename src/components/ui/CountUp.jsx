@@ -11,7 +11,7 @@ export function CountUp({
   const nodeRef = useRef(null);
   const inView = useInView(nodeRef, {
     once: true,
-    margin: '-50px'
+    margin: '-100px'
   });
   useEffect(() => {
     if (inView && nodeRef.current) {

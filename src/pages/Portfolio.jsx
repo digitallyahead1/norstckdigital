@@ -14,9 +14,9 @@ export function Portfolio({ onNavigate }) {
       metric2: '99.9%',
       label2: 'Uptime',
       logo: '/clients/cmanverify-logo.jpg',
-      logoBg: 'bg-white',
+      logoBg: 'bg-[#f8fafc]',
       url: 'https://cmanverify.com',
-      thumbGradient: 'from-[#061228] to-[#0a2560]',
+      thumbGradient: 'bg-[#090e1a]',
     },
     {
       name: 'RFT Academy',
@@ -28,9 +28,9 @@ export function Portfolio({ onNavigate }) {
       metric2: '4.9',
       label2: 'Student Rating',
       logo: '/clients/rft-academy-logo.png',
-      logoBg: 'bg-[#f3eef6]',
+      logoBg: 'bg-[#f8fafc]',
       url: 'https://rftacademy.com',
-      thumbGradient: 'from-[#1a0720] to-[#3d1050]',
+      thumbGradient: 'bg-[#090e1a]',
     },
     {
       name: 'MBRTS',
@@ -43,9 +43,9 @@ export function Portfolio({ onNavigate }) {
       label2: 'Mobile Ready',
       logo: null,
       initials: 'MB',
-      logoBg: 'bg-gradient-to-br from-[#0a1525] to-[#1a3050]',
+      logoBg: 'bg-[#090e1a]',
       url: 'https://mbrts.com',
-      thumbGradient: 'from-[#081525] to-[#0f2040]',
+      thumbGradient: 'bg-[#090e1a]',
     },
   ];
 
@@ -86,7 +86,7 @@ export function Portfolio({ onNavigate }) {
             >
               {/* Cinematic Thumbnail */}
               <div
-                className={`relative w-full aspect-video rounded-2xl bg-gradient-to-br ${project.thumbGradient} overflow-hidden mb-8 border border-brand-border1`}
+                className={`relative w-full aspect-video rounded-2xl ${project.thumbGradient} overflow-hidden mb-8 border border-brand-border1`}
               >
                 {/* Logo overlay */}
                 <div className="absolute inset-0 flex items-center justify-center p-10">
@@ -128,13 +128,13 @@ export function Portfolio({ onNavigate }) {
                   </svg>
                 </div>
 
-                {/* Category Pill — always dark regardless of theme */}
-                <div className="absolute bottom-6 left-6 bg-[#030712]/80 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold text-[#e2e8f0] uppercase tracking-widest border border-[#163060]">
+                {/* Category Pill */}
+                <div className="absolute bottom-6 left-6 bg-[#050a0c] backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold text-[#f8fafc] uppercase tracking-widest border border-[#1187c7]/30">
                   {project.category}
                 </div>
 
-                {/* Visit URL pill — always dark regardless of theme */}
-                <div className="absolute bottom-6 right-6 bg-[#00d2ff]/10 backdrop-blur-md border border-[#00d2ff]/30 px-3 py-1.5 rounded-full text-[9px] font-bold text-[#00d2ff] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300">
+                {/* Visit URL pill */}
+                <div className="absolute bottom-6 right-6 bg-[#1187c7]/10 backdrop-blur-md border border-[#1187c7]/30 px-3 py-1.5 rounded-full text-[9px] font-bold text-[#1187c7] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300">
                   Visit Site ↗
                 </div>
               </div>
@@ -181,7 +181,7 @@ export function Portfolio({ onNavigate }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center dark-theme bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-16"
+          className="text-center bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-16"
         >
           <h2 className="text-4xl font-heading font-bold mb-8">
             Your Project Could Be Next

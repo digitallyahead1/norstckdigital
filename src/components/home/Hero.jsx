@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Globe,
   Code2,
@@ -8,94 +8,94 @@ import {
   TrendingUp,
   Zap,
   ArrowRight,
-  ShieldCheck,
 } from 'lucide-react';
 
 const services = [
   {
+    id: 'website-dev',
     icon: Globe,
     title: 'Website Development',
-    subtitle: 'High-speed, SEO-optimized digital web platforms',
-    iconColor: 'text-[#00d2ff]',
-    iconBg: 'bg-[#00d2ff]/15 border-[#00d2ff]/30',
+    subtitle: 'High-speed, SEO-optimized digital web platforms engineered for maximum online authority.',
+    image: '/services/website-dev.png',
+    rotatingText: 'Digital Scale.',
   },
   {
+    id: 'software-eng',
     icon: Code2,
     title: 'Software Engineering',
-    subtitle: 'Scalable custom SaaS, portals & core APIs',
-    iconColor: 'text-indigo-400',
-    iconBg: 'bg-indigo-500/15 border-indigo-500/30',
+    subtitle: 'Scalable custom SaaS applications, enterprise client portals & high-throughput core APIs.',
+    image: '/services/software-eng.png',
+    rotatingText: 'Market Power.',
   },
   {
+    id: 'mobile-apps',
     icon: Smartphone,
     title: 'Mobile Applications',
-    subtitle: 'Native iOS & Android cross-platform apps',
-    iconColor: 'text-emerald-400',
-    iconBg: 'bg-emerald-500/15 border-emerald-500/30',
+    subtitle: 'Native iOS & Android cross-platform mobile apps built for fluid user engagement.',
+    image: '/services/mobile-apps.png',
+    rotatingText: 'Mobile Reach.',
   },
   {
+    id: 'uiux-design',
     icon: Sparkles,
     title: 'UI/UX Interface Design',
-    subtitle: 'Research-backed, conversion-focused design',
-    iconColor: 'text-purple-400',
-    iconBg: 'bg-purple-500/15 border-purple-500/30',
+    subtitle: 'Research-backed, conversion-focused design systems & interactive prototypes.',
+    image: '/services/uiux-design.png',
+    rotatingText: 'High Conversions.',
   },
   {
+    id: 'digital-marketing',
     icon: TrendingUp,
     title: 'Digital Marketing & SEO',
-    subtitle: 'Organic search visibility & high-ROI growth',
-    iconColor: 'text-cyan-400',
-    iconBg: 'bg-cyan-500/15 border-cyan-500/30',
+    subtitle: 'Organic search visibility, high-ROI client acquisition & growth analytics.',
+    image: '/services/digital-marketing.png',
+    rotatingText: 'Search Authority.',
   },
   {
+    id: 'automation',
     icon: Zap,
     title: 'Business Automation',
-    subtitle: 'AI workflows, CRM & auto-operations',
-    iconColor: 'text-amber-400',
-    iconBg: 'bg-amber-500/15 border-amber-500/30',
+    subtitle: 'AI workflow pipelines, custom CRM integrations & auto-operations for ultimate scale.',
+    image: '/services/automation.png',
+    rotatingText: 'AI Leverage.',
   },
-];
-
-const rotatingWords = [
-  { text: "Leverage.", color: "text-[#00d2ff]" },
-  { text: "Digital Scale.", color: "text-purple-400" },
-  { text: "Market Power.", color: "text-[#00d2ff]" },
-  { text: "High Conversions.", color: "text-purple-400" },
 ];
 
 export function Hero({ onNavigate }) {
-  const [currentWordIdx, setCurrentWordIdx] = useState(0);
+  // Synchronized Carousel & Typewriter State
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [typedLength, setTypedLength] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const stateRef = useRef({ typedLength, isDeleting, currentWordIdx });
-  stateRef.current = { typedLength, isDeleting, currentWordIdx };
+  const stateRef = useRef({ typedLength, isDeleting, currentSlide });
+  stateRef.current = { typedLength, isDeleting, currentSlide };
 
   useEffect(() => {
     let timer;
 
     const loop = () => {
-      const { typedLength: len, isDeleting: del, currentWordIdx: idx } = stateRef.current;
-      const targetWord = rotatingWords[idx].text;
+      const { typedLength: len, isDeleting: del, currentSlide: idx } = stateRef.current;
+      const targetWord = services[idx].rotatingText;
 
       if (!del) {
         if (len < targetWord.length) {
           setTypedLength(len + 1);
-          timer = setTimeout(loop, 60);
+          timer = setTimeout(loop, 190); // Slower typing speed (190ms per letter)
         } else {
           timer = setTimeout(() => {
             setIsDeleting(true);
-            timer = setTimeout(loop, 30);
-          }, 1800);
+            timer = setTimeout(loop, 80);
+          }, 3200); // 3.2s hold pause when phrase is fully typed
         }
       } else {
         if (len > 0) {
           setTypedLength(len - 1);
-          timer = setTimeout(loop, 30);
+          timer = setTimeout(loop, 80);
         } else {
           setIsDeleting(false);
-          setCurrentWordIdx((idx + 1) % rotatingWords.length);
-          timer = setTimeout(loop, 200);
+          // Advance slide and word at the EXACT same millisecond
+          setCurrentSlide((idx + 1) % services.length);
+          timer = setTimeout(loop, 400);
         }
       }
     };
@@ -104,16 +104,25 @@ export function Hero({ onNavigate }) {
     return () => clearTimeout(timer);
   }, []);
 
-  const activeWord = rotatingWords[currentWordIdx];
-  const typedString = activeWord.text.substring(0, typedLength);
+  const handleSelectSlide = (idx) => {
+    setCurrentSlide(idx);
+    setTypedLength(0);
+    setIsDeleting(false);
+  };
+
+  const activeService = services[currentSlide];
+  const typedString = activeService.rotatingText.substring(0, typedLength);
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-[94vh] flex items-center pt-32 md:pt-36 pb-20 md:pb-24 overflow-hidden bg-gradient-to-r from-[#030712] via-[#05112e] to-[#0b214f] select-none">
-      
+    <section className="relative min-h-[92vh] flex flex-col justify-center pt-32 md:pt-36 pb-20 md:pb-28 overflow-hidden bg-brand-bg select-none">
+
       {/* ─────────────────────────────────────────────── */}
-      {/* VISIBLE BOUNCING & DRIFTING HERO BACKGROUND    */}
+      {/* ATMOSPHERIC BOUNCING BACKGROUND GRID           */}
       {/* ─────────────────────────────────────────────── */}
-      <motion.div 
+      {/* ─────────────────────────────────────────────── */}
+      {/* ATMOSPHERIC BOUNCING BACKGROUND GRID           */}
+      {/* ─────────────────────────────────────────────── */}
+      <motion.div
         animate={{
           y: [0, -8, 2, -5, 0],
           x: [0, 3, -3, 0],
@@ -124,7 +133,7 @@ export function Hero({ onNavigate }) {
           repeat: Infinity,
           ease: 'easeInOut'
         }}
-        className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-center opacity-80 mix-blend-screen pointer-events-none"
+        className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-center opacity-30 mix-blend-screen pointer-events-none"
         style={{
           backgroundImage: 'url(/hero-network.svg)',
           willChange: 'transform',
@@ -132,223 +141,172 @@ export function Hero({ onNavigate }) {
         }}
       />
 
-      {/* Ambient Background Glows */}
+      {/* Background Soft Glow Bulbs */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-gold/10 rounded-full blur-[140px] pointer-events-none z-0" />
+
+      {/* ─────────────────────────────────────────────── */}
+      {/* 3 CORE SERVICE FLOATING BACKGROUND CARDS        */}
+      {/* ─────────────────────────────────────────────── */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+
+        {/* CARD 1: TOP RIGHT - UI/UX Interface Design (Desktop/Tablet Only) */}
         <motion.div
-          animate={{ x: ['-5%', '5%', '-5%'], y: ['-5%', '10%', '-5%'] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-[10%] left-[5%] w-[45vw] h-[45vw] rounded-full bg-blue-500/15 blur-[140px]"
-        />
+          animate={{
+            y: [0, -10, 0],
+            rotate: [5, 3, 5],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute top-24 right-4 sm:right-10 lg:right-16 z-0 w-[145px] sm:w-[175px] bg-brand-surface1/85 border border-brand-border1/80 p-3.5 rounded-2xl shadow-xl backdrop-blur-md hidden md:block text-left"
+        >
+          <div className="flex items-center gap-1.5 mb-1 text-brand-gold">
+            <Sparkles size={13} className="text-[#1187c7]" />
+            <span className="text-[9px] font-extrabold uppercase tracking-wider text-brand-text2">
+              UI/UX Design
+            </span>
+          </div>
+          <div className="text-base font-black text-brand-text1 mb-1">+145% Conversions</div>
+          <div className="inline-block bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-[8.5px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+            High ROI Design
+          </div>
+        </motion.div>
+
+        {/* CARD 2: UPPER SPACE ON MOBILE / MID LEFT ON DESKTOP - Software Engineering */}
         <motion.div
-          animate={{ x: ['5%', '-10%', '5%'], y: ['10%', '-5%', '10%'] }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          className="absolute bottom-[10%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-purple-600/15 blur-[140px]"
-        />
+          animate={{
+            y: [0, 10, 0],
+            rotate: [-4, -6, -4],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 0.6,
+          }}
+          className="absolute top-20 -right-2 xs:top-24 xs:right-2 sm:right-6 md:top-[48%] md:left-4 lg:left-12 md:right-auto md:-translate-y-1/2 z-0 w-[140px] sm:w-[170px] bg-brand-surface2/90 border border-brand-border1/80 p-3 sm:p-3.5 rounded-2xl shadow-xl backdrop-blur-md text-left scale-[0.62] xs:scale-75 md:scale-100 origin-top-right md:origin-left block opacity-85 sm:opacity-100"
+        >
+          <div className="flex items-center gap-1.5 mb-1 text-brand-gold">
+            <Code2 size={13} className="text-[#1187c7]" />
+            <span className="text-[9px] font-extrabold uppercase tracking-wider text-brand-text2">
+              Software Eng.
+            </span>
+          </div>
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-sm font-extrabold text-brand-text1">99.99%</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          </div>
+          <div className="text-[8.5px] text-brand-text2 font-semibold">Core APIs &amp; SaaS Portals</div>
+        </motion.div>
+
+        {/* CARD 3: LOWER SPACE ON MOBILE / BOTTOM RIGHT ON DESKTOP - Digital Marketing & SEO */}
+        <motion.div
+          animate={{
+            y: [0, -9, 0],
+            rotate: [3, 1, 3],
+          }}
+          transition={{
+            duration: 6.4,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 1.2,
+          }}
+          className="absolute bottom-4 -left-2 xs:bottom-8 xs:left-2 sm:left-6 md:bottom-16 md:right-6 lg:right-20 md:left-auto z-0 w-[140px] sm:w-[175px] bg-brand-surface1/85 border border-brand-border1/80 p-3 sm:p-3.5 rounded-2xl shadow-xl backdrop-blur-md text-left scale-[0.62] xs:scale-75 md:scale-100 origin-bottom-left md:origin-bottom-right block opacity-85 sm:opacity-100"
+        >
+          <div className="flex items-center gap-1.5 mb-1 text-brand-gold">
+            <TrendingUp size={13} className="text-[#1187c7]" />
+            <span className="text-[9px] font-extrabold uppercase tracking-wider text-brand-text2">
+              Marketing &amp; SEO
+            </span>
+          </div>
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-base font-extrabold text-brand-text1">#1 Rank</span>
+            <span className="text-[9px] font-black text-emerald-500">+240%</span>
+          </div>
+          <div className="w-full bg-brand-border1/50 h-1.5 rounded-full overflow-hidden">
+            <div className="bg-brand-gold h-full w-[85%] rounded-full" />
+          </div>
+        </motion.div>
+
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* ─────────────────────────────────────────────── */}
-          {/* LEFT COLUMN: HEADLINE + DESCRIPTION + CTAS     */}
-          {/* ─────────────────────────────────────────────── */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6">
-            {/* Badge Pill */}
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center space-x-2.5 bg-[#0c1e3b]/90 border border-brand-border2 rounded-full px-4 py-2 backdrop-blur-md shadow-sm"
-            >
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-              </span>
-              <span className="text-[10px] font-bold text-slate-100 uppercase tracking-[0.2em]">
-                Enterprise Digital Solutions
-              </span>
-            </motion.div>
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 relative z-10 w-full flex flex-col items-center text-center">
 
-            {/* Headline with LOCKED ZERO-JITTER Height */}
-            <div className="w-full flex flex-col justify-start">
-              <h1 className="text-[clamp(2.2rem,4.4vw,3.6rem)] leading-[1.14] tracking-[-0.03em] font-extrabold text-white">
-                <span className="block">Where brands gain</span>
-                <span className="block h-[1.25em] relative">
-                  <span className={activeWord.color}>
-                    {typedString}
-                  </span>
-                  <span className="inline-block w-[3px] h-[0.85em] bg-[#00d2ff] ml-1.5 animate-pulse align-middle" />
+        {/* ── TOP SECTION: CENTERED TEXT & CTAS ── */}
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-5 sm:space-y-6 mb-8 sm:mb-12 md:mb-16">
+
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2.5"
+          >
+            <span className="w-[3px] h-4 rounded-full bg-brand-gold" />
+            <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.22em] sm:tracking-[0.25em] text-brand-gold">
+              Enterprise Digital Solutions
+            </span>
+          </motion.div>
+
+          {/* Centered Headline with 2px Top/Bottom Margin & Zero Layout Distortion */}
+          <div className="w-full min-h-[5.5rem] xs:min-h-[6rem] sm:min-h-[6.5rem] md:min-h-[7.5rem] flex items-center justify-center my-[2px]">
+            <h1 className="text-[clamp(1.9rem,5.5vw,4.2rem)] leading-[1.18] tracking-[-0.03em] font-extrabold text-brand-text1 max-w-3xl text-center">
+              <span className="inline-block my-[2px]">Where brands gain </span>{' '}
+              <span className="inline-block relative text-left my-[2px] py-[2px]">
+                <span className="text-[#1187c7] mb-3">
+                  {typedString}
                 </span>
-              </h1>
-            </div>
-
-            {/* Description — Clean, lightweight, professional typography */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-[15px] md:text-[16px] text-slate-200 font-normal max-w-lg leading-relaxed"
-            >
-              Norstack Digital engineers high-performance websites, custom web applications, mobile apps, and automated growth systems — built for measurable business leverage.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto pt-2"
-            >
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => onNavigate('contact')}
-                className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#00d2ff] via-[#2563eb] to-[#a855f7] text-white font-bold text-xs uppercase tracking-wider rounded-full px-7 py-3.5 transition-all duration-300 shadow-[0_0_25px_rgba(0,210,255,0.35)] hover:shadow-[0_0_40px_rgba(168,85,247,0.45)]"
-              >
-                <span>Start a Project</span>
-                <ArrowRight
-                  size={15}
-                  className="group-hover:translate-x-1 transition-transform duration-300"
-                />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => onNavigate('services')}
-                className="inline-flex items-center justify-center gap-2 bg-[#0c1e3b]/90 hover:bg-[#0c1e3b] border border-brand-border2 hover:border-cyan-400/60 text-slate-100 font-bold text-xs uppercase tracking-wider rounded-full px-6 py-3.5 transition-all duration-300 backdrop-blur-sm"
-              >
-                <span>Explore Capabilities</span>
-              </motion.button>
-            </motion.div>
-
-            {/* Subtle trust line */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-[11px] text-slate-300 font-normal pt-1"
-            >
-              Looking for packages?{' '}
-              <button
-                onClick={() => onNavigate('pricing')}
-                className="text-[#00d2ff] hover:underline font-semibold"
-              >
-                View pricing plans &rarr;
-              </button>
-            </motion.p>
+                <span className="inline-block w-[3.5px] h-[0.85em] bg-brand-gold ml-1.5 animate-pulse align-middle" />
+              </span>
+            </h1>
           </div>
 
-          {/* ─────────────────────────────────────────────── */}
-          {/* RIGHT COLUMN: PROPORTIONATE CAPABILITIES CARD   */}
-          {/* ─────────────────────────────────────────────── */}
-          <div className="lg:col-span-6 relative w-full flex justify-center lg:justify-end">
-            {/* Experience Floating Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.5 }}
-              className="absolute -top-3 right-4 z-20 flex items-center gap-1.5 bg-[#08152e] border border-brand-border2 rounded-full px-3.5 py-1.5 shadow-lg"
+          {/* Centered Description */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-[14px] sm:text-[15px] md:text-[17px] text-brand-text2 font-normal max-w-2xl leading-relaxed px-2 sm:px-0"
+          >
+            Norstack Digital engineers high-performance websites, custom web applications, mobile apps, and automated growth systems — built for measurable business leverage.
+          </motion.p>
+
+          {/* Centered CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto pt-2"
+          >
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => onNavigate('pricing')}
+              className="w-full max-w-xs sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-gold text-white font-bold text-xs uppercase tracking-wider rounded-xl px-7 sm:px-8 py-3.5 sm:py-4 transition-all duration-300 shadow-md"
             >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500" />
-              </span>
-              <span className="text-[9px] font-bold text-slate-200 uppercase tracking-wider">
-                5+ Years Experience
-              </span>
-            </motion.div>
+              <span>View Packages &amp; Pricing</span>
+              <ArrowRight
+                size={15}
+                className="group-hover:translate-x-1 transition-transform duration-300"
+              />
+            </motion.button>
 
-            {/* Card Panel Container */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: [0, -6, 0]
-              }}
-              transition={{
-                opacity: { duration: 0.7 },
-                scale: { duration: 0.7 },
-                y: {
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut'
-                }
-              }}
-              className="w-full max-w-[490px] bg-[#0c1e3b]/95 border border-brand-border2 rounded-[2rem] p-5 md:p-6 shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-md overflow-hidden relative"
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => onNavigate('services')}
+              className="w-full max-w-xs sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-surface1 border border-brand-border1 hover:border-brand-border2 text-brand-text1 font-bold text-xs uppercase tracking-wider rounded-xl px-6 sm:px-7 py-3.5 sm:py-4 transition-all duration-300 backdrop-blur-sm shadow-sm"
             >
-              {/* Card Header */}
-              <div className="flex items-center justify-between mb-4 pb-3.5 border-b border-brand-border2/60">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00d2ff] via-[#3b82f6] to-[#a855f7] flex items-center justify-center shadow-md">
-                    <span className="text-white font-black text-xs">N</span>
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-black text-slate-100 uppercase tracking-wider">
-                      NORSTACK<span className="text-cyan-400"> DIGITAL</span>
-                    </div>
-                    <div className="text-[8px] font-bold text-slate-300 uppercase tracking-widest">
-                      Full-Stack Capabilities
-                    </div>
-                  </div>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-[8px] font-bold text-cyan-300 uppercase tracking-wider bg-[#081735] border border-cyan-500/30 rounded-full px-3 py-1 shadow-inner">
-                  <ShieldCheck size={11} /> Active Ops
-                </span>
-              </div>
-
-              {/* 2x3 Grid with comfortable proportions & clean typography */}
-              <div className="grid grid-cols-2 gap-3">
-                {services.map((svc, i) => {
-                  const Icon = svc.icon;
-                  return (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 + i * 0.04, duration: 0.35 }}
-                      onClick={() => onNavigate('services')}
-                      className="group bg-[#08152e]/90 border border-brand-border2/70 hover:border-cyan-400/50 hover:bg-[#0b1b3a] rounded-xl p-3 flex items-start gap-3 transition-all duration-200 cursor-pointer"
-                    >
-                      <div
-                        className={`w-8 h-8 rounded-lg border ${svc.iconBg} flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform mt-0.5`}
-                      >
-                        <Icon size={16} className={svc.iconColor} />
-                      </div>
-                      <div className="text-left min-w-0 flex-1">
-                        <div className="text-[11.5px] font-bold text-slate-100 group-hover:text-cyan-300 transition-colors leading-snug">
-                          {svc.title}
-                        </div>
-                        <div className="text-[9px] text-slate-400 font-light leading-tight mt-0.5 line-clamp-2">
-                          {svc.subtitle}
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              {/* Bottom live indicator */}
-              <div className="mt-4 pt-3 border-t border-brand-border2/60 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                  </span>
-                  <span className="text-[8.5px] font-bold text-slate-200 uppercase tracking-wider">
-                    Continuous Delivery
-                  </span>
-                </div>
-                <span className="text-[8.5px] font-medium text-slate-400 tracking-wide">
-                  Design &bull; Code &bull; Scale
-                </span>
-              </div>
-            </motion.div>
-          </div>
-
+              <span>Explore Capabilities</span>
+            </motion.button>
+          </motion.div>
         </div>
+
       </div>
     </section>
   );
 }
+
+

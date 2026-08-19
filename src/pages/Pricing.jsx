@@ -72,9 +72,9 @@ export function Pricing({ onNavigate }) {
             <Button
               variant="outline"
               onClick={() => handleAskPricing('Starter')}
-              className="w-full justify-center gap-2 border-[#25D366]/40 hover:border-[#25D366] hover:bg-[#25D366]/10 text-brand-text1"
+              className="w-full justify-center gap-2 border-[#1187c7]/40 hover:border-[#1187c7] hover:bg-[#1187c7]/10 text-brand-text1"
             >
-              <span className="text-[#25D366]">💬</span> Ask for Pricing
+              <span className="text-[#1187c7]">💬</span> Ask for Pricing
             </Button>
           </motion.div>
 
@@ -83,12 +83,12 @@ export function Pricing({ onNavigate }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative bg-brand-surface2 border border-brand-gold rounded-[2rem] p-10 flex flex-col h-full transform lg:-translate-y-4 shadow-[0_20px_60px_rgba(0,210,255,0.15)]"
+            className="relative bg-brand-surface2 border border-brand-gold rounded-[2rem] p-10 flex flex-col h-full transform lg:-translate-y-4 shadow-[0_20px_60px_rgba(17,135,199,0.15)]"
           >
-            {/* Gradient Top Line */}
-            <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-[#00d2ff] to-[#a855f7] rounded-t-full"></div>
+            {/* Top Line */}
+            <div className="absolute top-0 left-8 right-8 h-1 bg-[#1187c7] rounded-t-full"></div>
 
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#00d2ff] to-[#a855f7] text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-6 rounded-full shadow-md">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#1187c7] text-[#f8fafc] text-[10px] font-bold uppercase tracking-widest py-1.5 px-6 rounded-full shadow-md">
               Most Popular
             </div>
 
@@ -125,7 +125,7 @@ export function Pricing({ onNavigate }) {
 
             <Button
               onClick={() => handleAskPricing('Growth')}
-              className="w-full justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold"
+              className="w-full justify-center gap-2 bg-[#1187c7] hover:opacity-90 text-[#f8fafc] font-bold"
             >
               <span>💬</span> Ask for Pricing
             </Button>
@@ -172,9 +172,9 @@ export function Pricing({ onNavigate }) {
             <Button
               variant="outline"
               onClick={() => handleAskPricing('Authority')}
-              className="w-full justify-center gap-2 border-[#25D366]/40 hover:border-[#25D366] hover:bg-[#25D366]/10 text-brand-text1"
+              className="w-full justify-center gap-2 border-[#1187c7]/40 hover:border-[#1187c7] hover:bg-[#1187c7]/10 text-brand-text1"
             >
-              <span className="text-[#25D366]">💬</span> Ask for Pricing
+              <span className="text-[#1187c7]">💬</span> Ask for Pricing
             </Button>
           </motion.div>
         </div>

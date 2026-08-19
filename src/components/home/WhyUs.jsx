@@ -40,14 +40,14 @@ export function WhyUs() {
       <div className="max-w-[1400px] mx-auto relative z-10">
         <div className="mb-16">
           <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-[3px] h-5 bg-gradient-to-b from-brand-gold to-brand-blue rounded-full"></span>
-            <span className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-brand-gold">
+            <span className="w-[3px] h-5 bg-[#1187c7] rounded-full"></span>
+            <span className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#1187c7]">
               Why Choose Norstack
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black max-w-3xl text-brand-text1 leading-[1.12] tracking-tight">
             Engineered for{' '}
-            <span className="bg-gradient-to-r from-[#00d2ff] via-[#3b82f6] to-[#a855f7] bg-clip-text text-transparent font-black">
+            <span className="text-[#1187c7] font-black">
               Tangible ROI,
             </span>
             <br />
@@ -91,13 +91,12 @@ export function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-5 relative bg-gradient-to-b from-brand-surface2 to-brand-surface1 border border-brand-border1 rounded-[2rem] p-8 md:p-10 overflow-hidden shadow-2xl backdrop-blur-md group"
+            className="lg:col-span-5 relative bg-brand-surface2 border border-brand-border1 rounded-[2rem] p-8 md:p-10 overflow-hidden shadow-2xl backdrop-blur-md group"
           >
             {/* Top decorative glow */}
             <div className="absolute -top-32 -right-32 w-80 h-80 bg-brand-gold/15 blur-[90px] rounded-full pointer-events-none group-hover:bg-brand-gold/25 transition-all duration-700"></div>
 
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[9px] font-bold rounded-full uppercase tracking-wider mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Verified Performance
             </div>
 
@@ -136,7 +135,7 @@ export function WhyUs() {
               </div>
             </div>
 
-            <div className="h-px w-full bg-gradient-to-r from-brand-gold/40 via-brand-border1 to-transparent mb-8 relative z-10"></div>
+            <div className="h-px w-full bg-[#1187c7]/30 mb-8 relative z-10"></div>
 
             <blockquote className="relative z-10 bg-brand-surface1/80 p-5 rounded-2xl border border-brand-border1">
               <div className="flex gap-1 text-brand-gold mb-3">

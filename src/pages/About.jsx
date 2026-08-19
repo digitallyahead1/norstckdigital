@@ -58,8 +58,8 @@ export function About() {
             className="relative bg-brand-surface1 border border-brand-border1 rounded-[2rem] p-10 md:p-14 overflow-hidden">
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-brand-gold/20 blur-[100px] rounded-full pointer-events-none"></div>
             <div className="relative z-10">
-              <div className="w-32 h-32 rounded-[2rem] bg-gradient-to-br from-[#00d2ff] via-[#3b82f6] to-[#a855f7] flex items-center justify-center mb-12 shadow-2xl">
-                <span className="text-7xl font-heading font-extrabold text-white">N</span>
+              <div className="w-32 h-32 rounded-[2rem] bg-[#1187c7] flex items-center justify-center mb-12 shadow-2xl">
+                <span className="text-7xl font-heading font-extrabold text-[#f8fafc]">N</span>
               </div>
               <h2 className="text-3xl font-heading font-bold mb-3">Norstack Digital</h2>
               <p className="text-brand-text2 mb-12 font-editorial text-2xl">Where Brands Gain Leverage</p>
@@ -120,7 +120,6 @@ export function About() {
           {/* Section Header */}
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
               <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text2">Our Team</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-heading font-bold">
@@ -138,7 +137,7 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="group flex flex-col rounded-3xl overflow-hidden border border-brand-border1 bg-brand-surface1 hover:border-brand-gold/40 transition-all duration-500 hover:shadow-[0_0_60px_-10px_rgba(0,210,255,0.2)]"
+                className="group flex flex-col rounded-3xl overflow-hidden border border-brand-border1 bg-brand-surface1 hover:border-brand-gold/40 transition-all duration-500 hover:shadow-lg"
               >
                 {/* ── Photo Panel (identical height & structure for all cards) ── */}
                 <div className="relative h-72 overflow-hidden bg-brand-surface2 shrink-0">
@@ -149,7 +148,7 @@ export function About() {
                   </div>
 
                   {/* Gold shimmer bar on hover — top edge */}
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#1187c7] z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   {/* Profile photo */}
                   <img
@@ -160,9 +159,6 @@ export function About() {
                     style={{ objectPosition: member.objectPosition }}
                     className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                   />
-
-                  {/* Bottom fade blending into info panel */}
-                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-brand-surface1 to-transparent"></div>
                 </div>
 
                 {/* ── Info Panel (identical layout for all cards) ── */}
