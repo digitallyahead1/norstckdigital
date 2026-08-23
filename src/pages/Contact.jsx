@@ -34,7 +34,7 @@ export function Contact() {
     };
 
     const budgetMap = {
-      tier1: '₦250k – ₦500k',
+      tier1: '₦300k – ₦500k',
       tier2: '₦500k – ₦1.2M',
       tier3: '₦1.2M – ₦3M',
       tier4: '₦3M+',
@@ -336,7 +336,7 @@ ${formData.message}`;
                       className="w-full bg-brand-surface2 border border-brand-border1 rounded-xl px-4 py-4 text-sm text-brand-text1 focus:outline-none focus:border-brand-gold transition-colors appearance-none"
                     >
                       <option value="">Select a range...</option>
-                      <option value="tier1">₦250k – ₦500k</option>
+                      <option value="tier1">₦300k – ₦500k</option>
                       <option value="tier2">₦500k – ₦1.2M</option>
                       <option value="tier3">₦1.2M – ₦3M</option>
                       <option value="tier4">₦3M+</option>
